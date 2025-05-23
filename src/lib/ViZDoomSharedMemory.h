@@ -65,6 +65,7 @@ namespace vizdoom {
     /* SM structs */
     /*----------------------------------------------------------------------------------------------------------------*/
 
+    // All these structures should reflect structures in src/vizdoom/src/viz_game.h
     struct SMLabel {
         uint8_t value;
         unsigned int position[2];
@@ -96,7 +97,7 @@ namespace vizdoom {
     struct SMGameState {
         // VERSION
         unsigned int VERSION;
-        char VERSION_STR[8];
+        char VERSION_STR[16];
 
         // SM
         size_t SM_SIZE;
