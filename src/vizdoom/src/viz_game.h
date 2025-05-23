@@ -70,7 +70,7 @@ extern VIZPlayerLogger vizPlayerLogger[VIZ_MAX_PLAYERS];
 
 void VIZ_LogDmg(AActor *target, AActor *inflictor, AActor *source, int damage);
 
-// These structures should reflect structures in lib/ViZDoomSharedMemory.h
+// All these structures should reflect structures in src/lib/ViZDoomSharedMemory.h
 struct VIZLabel{
     BYTE value;
     unsigned int position[2];
@@ -103,7 +103,7 @@ struct VIZLine{
 struct VIZGameState{
     // VERSION
     unsigned int VERSION;
-    char VERSION_STR[8];
+    char VERSION_STR[16];
 
     // SM
     size_t SM_SIZE;

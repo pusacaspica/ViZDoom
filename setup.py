@@ -63,7 +63,10 @@ def get_vizdoom_version():
         with open("CMakeLists.txt") as cmake_file:
             lines = cmake_file.read()
             version = re.search(r"VERSION\s+([0-9].[0-9].[0-9]+)", lines).group(1)
-            return version
+            version_suffix = re.search(
+                r"ViZDoom_VERSION_SUFFIX\s+\"((?:a|b|rc|.post|.dev)[0-9]+|)\"", lines
+            ).group(1)
+            return version + version_suffix
 
     except Exception:
         raise RuntimeError(
