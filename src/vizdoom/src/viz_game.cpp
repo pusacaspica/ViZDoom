@@ -246,7 +246,7 @@ void VIZ_GameStateInit(){
     }
 
     vizGameStateSM->VERSION = VIZ_VERSION;
-    strncpy(vizGameStateSM->VERSION_STR, VIZ_VERSION_STR, 8);
+    strncpy(vizGameStateSM->VERSION_STR, VIZ_VERSION_STR, 16);
     vizGameStateSM->SM_SIZE = vizSMSize;
 
     vizGameStateSM->GAME_TIC = 0;
