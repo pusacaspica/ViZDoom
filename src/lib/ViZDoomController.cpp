@@ -1069,6 +1069,14 @@ namespace vizdoom {
 
     int DoomController::getMapReward() { return this->gameState->MAP_REWARD; }
 
+    int DoomController::getKillCount() { return this->gameState->PLAYER_KILLCOUNT; }
+
+    int DoomController::getItemCount() { return this->gameState->PLAYER_ITEMCOUNT; }
+
+    int DoomController::getSecretCount() { return this->gameState->PLAYER_SECRETCOUNT; }
+
+    int DoomController::getFragCount() { return this->gameState->PLAYER_FRAGCOUNT; }
+
     bool DoomController::isPlayerDead() { return this->gameState->PLAYER_DEAD; }
 
     int DoomController::getPlayerCount() { return this->gameState->PLAYER_COUNT; }

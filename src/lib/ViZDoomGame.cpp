@@ -44,6 +44,10 @@ namespace vizdoom {
         this->lastMapReward = 0;
         this->deathPenalty = 0;
         this->livingReward = 0;
+        this->killReward = 0;
+        this->secretReward = 0;
+        this->itemReward = 0;
+        this->fragReward = 0;
         this->summaryReward = 0;
         this->lastMapTic = 0;
         this->nextStateNumber = 1;
@@ -79,15 +83,7 @@ namespace vizdoom {
                     this->doomController->setButtonAvailable(this->availableButtons[i], true);
                 }
 
-                this->lastMapTic = 0;
-                this->nextStateNumber = 1;
-
-                this->updateState();
-
-                //this->lastMapReward = 0;
-                this->lastReward = 0;
-                this->summaryReward = 0;
-
+                this->resetState();
             }
             catch (...) { throw; }
 
@@ -184,7 +180,6 @@ namespace vizdoom {
 
         this->updateState();
 
-        //this->lastMapReward = 0;
         this->lastReward = 0;
         this->summaryReward = 0;
     }
@@ -205,13 +200,38 @@ namespace vizdoom {
 
         /* Update reward */
         double reward = 0;
+
+        /* Programmed map reward */
         double mapReward = doomFixedToDouble(this->doomController->getMapReward());
-        reward = mapReward - this->lastMapReward;
+        reward += mapReward - this->lastMapReward;
+        this->lastMapReward = mapReward;
+
+        /* Common rewards */
         int liveTime = this->doomController->getMapLastTic() - this->lastMapTic;
         reward += (liveTime > 0 ? liveTime : 0) * this->livingReward;
         if (this->doomController->isPlayerDead()) reward -= this->deathPenalty;
 
-        this->lastMapReward = mapReward;
+        /* Kill reward */
+        int killCount = this->doomController->getKillCount();
+        if (killCount > this->lastKillCount) reward += (killCount - this->lastKillCount) * this->killReward;
+        this->lastKillCount = killCount;
+        
+        /* Secret reward */
+        int secretCount = this->doomController->getSecretCount();
+        if (secretCount > this->lastSecretCount) reward += (secretCount - this->lastSecretCount) * this->secretReward;
+        this->lastSecretCount = secretCount;
+
+        /* Item reward */
+        int itemCount = this->doomController->getItemCount();
+        if (itemCount > this->lastItemCount) reward += (itemCount - this->lastItemCount) * this->itemReward;
+        this->lastItemCount = itemCount;
+
+        /* Frag reward */
+        int fragCount = this->doomController->getFragCount();
+        if (fragCount > this->lastFragCount) reward += (fragCount - this->lastFragCount) * this->fragReward;
+        this->lastFragCount = fragCount;
+
+        /* Update summary reward */
         this->summaryReward += reward;
         this->lastReward = reward;
 

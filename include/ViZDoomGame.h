@@ -118,6 +118,16 @@ namespace vizdoom {
         void setLivingReward(double livingReward);
         double getDeathPenalty();
         void setDeathPenalty(double deathPenalty);
+        double getDeathReward();
+        void setDeathReward(double deathReward);
+        double getKillReward();
+        void setKillReward(double killReward);
+        double getSecretReward();
+        void setSecretReward(double secretReward);
+        double getItemReward();
+        void setItemReward(double itemReward);
+        double getFragReward();
+        void setFragReward(double fragReward);
         double getLastReward();
         double getTotalReward();
 
@@ -242,6 +252,15 @@ namespace vizdoom {
 
         double livingReward;
         double deathPenalty;
+
+        double killReward;
+        int lastKillCount;
+        double secretReward;
+        int lastSecretCount;
+        double itemReward;
+        int lastItemCount;
+        double fragReward;
+        int lastFragCount;
 
     private:
 

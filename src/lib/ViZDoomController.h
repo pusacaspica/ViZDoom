@@ -270,6 +270,10 @@ namespace vizdoom {
         bool isReplaying();
         unsigned int getMapTic();
         int getMapReward();
+        int getKillCount();
+        int getSecretCount();
+        int getItemCount();
+        int getFragCount();
         bool isPlayerDead();
 
         int getPlayerCount();
