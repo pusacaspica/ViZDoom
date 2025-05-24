@@ -523,6 +523,26 @@ namespace vizdoom {
 
     void DoomGame::setDeathPenalty(double deathPenalty) { this->deathPenalty = deathPenalty; }
 
+    double DoomGame::getDeathReward() { return -this->deathPenalty; }
+
+    void DoomGame::setDeathReward(double deathReward) { this->deathPenalty = -deathReward; }
+
+    double DoomGame::getKillReward() { return this->killReward; }
+
+    void DoomGame::setKillReward(double killReward) { this->killReward = killReward; }
+
+    double DoomGame::getSecretReward() { return this->secretReward; }
+
+    void DoomGame::setSecretReward(double secretReward) { this->secretReward = secretReward; }
+
+    double DoomGame::getItemReward() { return this->itemReward; }
+
+    void DoomGame::setItemReward(double itemReward) { this->itemReward = itemReward; }
+
+    double DoomGame::getFragReward() { return this->fragReward; }
+
+    void DoomGame::setFragReward(double fragReward) { this->fragReward = fragReward; }
+
     double DoomGame::getLastReward() {
         if (!this->isRunning()) throw ViZDoomIsNotRunningException();
         return this->lastReward;
