@@ -84,7 +84,7 @@ processes the specified number of tics, updates the state and calculates a new r
 :meth:`make_action` and :meth:`advance_action` methods
 will take no effect after this point (unless :meth:`new_episode` method is called).)DOCSTRING";
 
-    const char *isEpisodeTimeoutReached = R"DOCSTRING(Returns ``True`` if the current episode is in the terminal state due to exceeding the time limit (timeout) 
+    const char *isEpisodeTimeoutReached = R"DOCSTRING(Returns ``True`` if the current episode is in the terminal state due to exceeding the time limit (timeout)
 set with :meth:`set_episode_timeout`` method or via ``+timelimit` parameter.)DOCSTRING";
 
     const char *isPlayerDead = R"DOCSTRING(Returns ``True`` if the player is dead.
@@ -239,6 +239,48 @@ Config key: ``livingReward``/``living_reward``)DOCSTRING";
 Default value: 0
 
 Config key: ``deathPenalty``/``death_penalty``)DOCSTRING";
+
+    const char *getDeathReward = R"DOCSTRING(Returns the reward for the player's death. It is equal to negation of value returned by :meth:`get_death_reward`).
+
+Config key: ``deathReward``/``death_reward``)DOCSTRING";
+
+    const char *setDeathReward = R"DOCSTRING(Sets a reward for the player's death. A negative value is also allowed.
+
+Default value: 0
+
+Config key: ``deathReward``/``death_reward``)DOCSTRING";
+
+    const char *getKillReward = R"DOCSTRING(Returns the reward granted to the player for killing an enemy.)DOCSTRING";
+
+    const char *setKillReward = R"DOCSTRING(Sets the reward granted to the player for killing an enemy. A negative value is also allowed.
+
+Default value: 0
+
+Config key: ``killReward``/``kill_reward``)DOCSTRING";
+
+    const char *getItemReward = R"DOCSTRING(Returns the reward granted to the player for picking up an item.)DOCSTRING";
+
+    const char *setItemReward = R"DOCSTRING(Sets the reward granted to the player for picking up an item. A negative value is also allowed.
+
+Default value: 0
+
+Config key: ``itemReward``/``item_reward``)DOCSTRING";
+
+    const char *getSecretReward = R"DOCSTRING(Returns the reward granted to the player for discovering a secret.)DOCSTRING";
+
+    const char *setSecretReward = R"DOCSTRING(Sets the reward granted to the player for discovering a secret. A negative value is also allowed.
+
+Default value: 0
+
+Config key: ``secretReward``/``secret_reward``)DOCSTRING";
+
+    const char *getFragReward = R"DOCSTRING(Returns the reward granted to the player for scoring a frag (killing another player in multiplayer).)DOCSTRING";
+
+    const char *setFragReward = R"DOCSTRING(Sets the reward granted to the player for scoring a frag. A negative value is also allowed.
+
+Default value: 0
+
+Config key: ``fragReward``/``frag_reward``)DOCSTRING";
 
     const char *getLastReward = R"DOCSTRING(Returns a reward granted after the last update of state.)DOCSTRING";
 

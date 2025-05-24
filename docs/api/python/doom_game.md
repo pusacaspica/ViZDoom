@@ -76,6 +76,16 @@ DoomGame is the main object of the ViZDoom library, representing a single instan
 .. autofunction:: vizdoom.DoomGame.set_living_reward
 .. autofunction:: vizdoom.DoomGame.get_death_penalty
 .. autofunction:: vizdoom.DoomGame.set_death_penalty
+.. autofunction:: vizdoom.DoomGame.get_death_reward
+.. autofunction:: vizdoom.DoomGame.set_death_reward
+.. autofunction:: vizdoom.DoomGame.get_kill_reward
+.. autofunction:: vizdoom.DoomGame.set_kill_reward
+.. autofunction:: vizdoom.DoomGame.get_item_reward
+.. autofunction:: vizdoom.DoomGame.set_item_reward
+.. autofunction:: vizdoom.DoomGame.get_secret_reward
+.. autofunction:: vizdoom.DoomGame.set_secret_reward
+.. autofunction:: vizdoom.DoomGame.get_frag_reward
+.. autofunction:: vizdoom.DoomGame.set_frag_reward
 .. autofunction:: vizdoom.DoomGame.get_last_reward
 .. autofunction:: vizdoom.DoomGame.get_total_reward
 ```

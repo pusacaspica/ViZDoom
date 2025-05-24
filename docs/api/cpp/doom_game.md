@@ -235,7 +235,7 @@ See also:
 ---
 ### `getState`
 
-| C++    | `GameStatePtr (std::shared_ptr<GameState>) GameState getState()` |
+| C++    | `GameStatePtr (std::shared_ptr<GameState>) getState()` |
 | :--    | :--                                                              |
 | Python | `get_state() -> GameState`                                       |
 
@@ -248,7 +248,7 @@ Note: Changed in 1.1.0
 ---
 ### `getServerState`
 
-| C++    | `ServerStatePtr (std::shared_ptr<ServerState>) ServerState getServerState()` |
+| C++    | `ServerStatePtr (std::shared_ptr<ServerState>) getServerState()` |
 | :--    | :--                                                                          |
 | Python | `get_state_state() -> ServerState`                                           |
 
@@ -591,6 +591,146 @@ Sets a penalty for the player's death. Note that in case of a negative value, th
 Default value: 0
 
 Config key: `deathPenalty`/`death_penalty`
+
+
+---
+### `getDeathReward`
+
+| C++    | `double getDeathReward()`     |
+| :--    | :--                            |
+| Python | `get_death_reward() -> float` |
+
+Returns the reward for the player's death. It is equal to negation of value returned by [`getDeathReward`](#getdeathreward)).
+
+Note: added in 1.3.0
+
+
+---
+### `setDeathReward`
+
+| C++    | `void setDeathReward(double deathReward)`       |
+| :--    | :--                                               |
+| Python | `set_death_reward(death_reward: float) -> None` |
+
+Sets a reward for the player's death. A negative value is also allowed.
+
+Default value: 0
+
+Config key: `deathReward`/`death_reward`
+
+Note: added in 1.3.0
+
+
+---
+### `getKillReward`
+
+| C++    | `double getKillReward()`     |
+| :--    | :--                          |
+| Python | `get_kill_reward() -> float` |
+
+Returns the reward granted to the player for killing an enemy.
+
+Note: added in 1.3.0
+
+
+---
+### `setKillReward`
+
+| C++    | `void setKillReward(double killReward)`       |
+| :--    | :--                                           |
+| Python | `set_kill_reward(kill_reward: float) -> None` |
+
+Sets the reward granted to the player for killing an enemy. A negative value is also allowed.
+
+Default value: 0
+
+Config key: `killReward`/`kill_reward`
+
+Note: added in 1.3.0
+
+
+---
+### `getItemReward`
+
+| C++    | `double getItemReward()`     |
+| :--    | :--                          |
+| Python | `get_item_reward() -> float` |
+
+Returns the reward granted to the player for picking up an item.
+
+Note: added in 1.3.0
+
+
+---
+### `setItemReward`
+
+| C++    | `void setItemReward(double itemReward)`       |
+| :--    | :--                                           |
+| Python | `set_item_reward(item_reward: float) -> None` |
+
+Sets the reward granted to the player for picking up an item. A negative value is also allowed.
+
+Default value: 0
+
+Config key: `itemReward`/`item_reward`
+
+Note: added in 1.3.0
+
+
+---
+### `getSecretReward`
+
+| C++    | `double getSecretReward()`     |
+| :--    | :--                            |
+| Python | `get_secret_reward() -> float` |
+
+Returns the reward granted to the player for discovering a secret.
+
+Note: added in 1.3.0
+
+
+---
+### `setSecretReward`
+
+| C++    | `void setSecretReward(double secretReward)`       |
+| :--    | :--                                               |
+| Python | `set_secret_reward(secret_reward: float) -> None` |
+
+Sets the reward granted to the player for discovering a secret. A negative value is also allowed.
+
+Default value: 0
+
+Config key: `secretReward`/`secret_reward`
+
+Note: added in 1.3.0
+
+
+---
+### `getFragReward`
+
+| C++    | `double getFragReward()`     |
+| :--    | :--                          |
+| Python | `get_frag_reward() -> float` |
+
+Returns the reward granted to the player for scoring a frag (killing another player in multiplayer).
+
+Note: added in 1.3.0
+
+
+---
+### `setFragReward`
+
+| C++    | `void setFragReward(double fragReward)`       |
+| :--    | :--                                           |
+| Python | `set_frag_reward(frag_reward: float) -> None` |
+
+Sets the reward granted to the player for scoring a frag. A negative value is also allowed.
+
+Default value: 0
+
+Config key: `fragReward`/`frag_reward`
+
+Note: added in 1.3.0
 
 
 ---
