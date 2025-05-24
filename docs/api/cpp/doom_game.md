@@ -330,6 +330,8 @@ Sets given list of [`Button`](./enums.md#button) s (e.g. `TURN_LEFT`, `MOVE_FORW
 
 Has no effect when the game is running.
 
+Default value: `[]` (empty vector/list, no buttons).
+
 Config key: `availableButtons`/`available_buttons` (list of values)
 
 
@@ -382,6 +384,8 @@ Setting the maximum value to 0 results in no constraint at all (infinity).
 This method makes sense only for delta buttons.
 The constraints limit applies in all Modes.
 
+Default value: 0 (no constraint, infinity).
+
 Has no effect when the game is running.
 
 
@@ -428,6 +432,8 @@ that were added with [`setAvailableGameVariables`](#setavailablegamevariables) o
 Sets list of [`GameVariable`](./enums.md#gamevariable) s as available game variables in the [`GameState`](./gameState.md#gamestate) returned by [`getState`](#getstate) method.
 
 Has no effect when the game is running.
+
+Default value: `[]` (empty vector/list, no game variables).
 
 Config key: `availableGameVariables`/`available_game_variables` (list of values)
 
@@ -494,6 +500,8 @@ Sets custom arguments that will be passed to ViZDoom process during initializati
 It is useful for changing additional game settings.
 Use with caution, as in rare cases it may prevent the library from working properly.
 Using this method is equivalent to first calling [`clearGameArgs`](#cleargameargs) and then [`addGameArgs`](#addgameargs).
+
+Default value: `""` (empty string, no additional arguments).
 
 Config key: `gameArgs`/`game_args`
 
@@ -872,7 +880,7 @@ If not provided, the default Doom single-player maps will be loaded.
 
 Default value: `""`
 
-Config key: `DoomScenarioPath`/`set_doom_scenario_path`
+Config key: `DoomScenarioPath`/`doom_scenario_path`
 
 
 ---
@@ -1172,7 +1180,7 @@ which determines what will be visible on it.
 
 Default value: `NORMAL`
 
-Config key: `automapMode`/`set_automap_mode`
+Config key: `automapMode`/`automap_mode`
 
 Note: added in 1.1.0.
 
@@ -1612,7 +1620,7 @@ Default value: false
 
 Has no effect when the game is running.
 
-Config key: `audioSamplingRate`/`audio_samping_rate`
+Config key: `audioSamplingRate`/`audio_sampling_rate`
 
 See also:
 - [`GameState`](./gameState.md#gamestate)

@@ -141,6 +141,8 @@ that were added with :meth:`set_available_buttons` or/and :meth:`add_available_b
 
 Has no effect when the game is running.
 
+Default value: `[]` (empty vector/list, no buttons).
+
 Config key: ``availableButtons``/``available_buttons`` (list of values))DOCSTRING";
 
     const char *addAvailableButton = R"DOCSTRING(Adds :class:`.Button` type (e.g. ``TURN_LEFT``, ``MOVE_FORWARD``) to available buttons and sets the maximum allowed, absolute value for the specified button.
@@ -161,6 +163,8 @@ Setting the maximum value to 0 results in no constraint at all (infinity).
 This method makes sense only for delta buttons.
 The constraints limit applies in all Modes.
 
+Default value: 0 (no constraint, infinity).
+
 Has no effect when the game is running.)DOCSTRING";
 
     const char *getButtonMaxValue = R"DOCSTRING(Returns the maximum allowed absolute value for the specified :class:`.Button`.)DOCSTRING";
@@ -173,6 +177,8 @@ that were added with :meth:`set_available_game_variables` or/and :meth:`add_avai
     const char *setAvailableGameVariables = R"DOCSTRING(Sets list of :class:`.GameVariable` s as available game variables in the :class:`.GameState` returned by :meth:`get_state` method.
 
 Has no effect when the game is running.
+
+Default value: `[]` (empty vector/list, no game variables).
 
 Config key: ``availableGameVariables``/``available_game_variables`` (list of values))DOCSTRING";
 
@@ -197,6 +203,8 @@ It could be used for e.g. shaping. Returns 0 in case of not finding given :class
 It is useful for changing additional game settings.
 Use with caution, as in rare cases it may prevent the library from working properly.
 Using this method is equivalent to first calling :meth:`clear_game_args` and then :meth:`add_game_args`.
+
+Default value: ``""`` (empty string, no additional arguments).
 
 Config key: ``gameArgs``/``game_args``
 
@@ -242,45 +250,63 @@ Config key: ``deathPenalty``/``death_penalty``)DOCSTRING";
 
     const char *getDeathReward = R"DOCSTRING(Returns the reward for the player's death. It is equal to negation of value returned by :meth:`get_death_reward`).
 
-Config key: ``deathReward``/``death_reward``)DOCSTRING";
+Note: added in 1.3.0)DOCSTRING";
 
     const char *setDeathReward = R"DOCSTRING(Sets a reward for the player's death. A negative value is also allowed.
 
 Default value: 0
 
-Config key: ``deathReward``/``death_reward``)DOCSTRING";
+Config key: ``deathReward``/``death_reward``
 
-    const char *getKillReward = R"DOCSTRING(Returns the reward granted to the player for killing an enemy.)DOCSTRING";
+Note: added in 1.3.0)DOCSTRING";
+
+    const char *getKillReward = R"DOCSTRING(Returns the reward granted to the player for killing an enemy.
+
+Note: added in 1.3.0)DOCSTRING";
 
     const char *setKillReward = R"DOCSTRING(Sets the reward granted to the player for killing an enemy. A negative value is also allowed.
 
 Default value: 0
 
-Config key: ``killReward``/``kill_reward``)DOCSTRING";
+Config key: ``killReward``/``kill_reward``
 
-    const char *getItemReward = R"DOCSTRING(Returns the reward granted to the player for picking up an item.)DOCSTRING";
+Note: added in 1.3.0)DOCSTRING";
+
+    const char *getItemReward = R"DOCSTRING(Returns the reward granted to the player for picking up an item.
+
+Note: added in 1.3.0)DOCSTRING";
 
     const char *setItemReward = R"DOCSTRING(Sets the reward granted to the player for picking up an item. A negative value is also allowed.
 
 Default value: 0
 
-Config key: ``itemReward``/``item_reward``)DOCSTRING";
+Config key: ``itemReward``/``item_reward``
 
-    const char *getSecretReward = R"DOCSTRING(Returns the reward granted to the player for discovering a secret.)DOCSTRING";
+Note: added in 1.3.0)DOCSTRING";
+
+    const char *getSecretReward = R"DOCSTRING(Returns the reward granted to the player for discovering a secret.
+
+Note: added in 1.3.0)DOCSTRING";
 
     const char *setSecretReward = R"DOCSTRING(Sets the reward granted to the player for discovering a secret. A negative value is also allowed.
 
 Default value: 0
 
-Config key: ``secretReward``/``secret_reward``)DOCSTRING";
+Config key: ``secretReward``/``secret_reward``
 
-    const char *getFragReward = R"DOCSTRING(Returns the reward granted to the player for scoring a frag (killing another player in multiplayer).)DOCSTRING";
+Note: added in 1.3.0)DOCSTRING";
+
+    const char *getFragReward = R"DOCSTRING(Returns the reward granted to the player for scoring a frag (killing another player in multiplayer).
+
+Note: added in 1.3.0)DOCSTRING";
 
     const char *setFragReward = R"DOCSTRING(Sets the reward granted to the player for scoring a frag. A negative value is also allowed.
 
 Default value: 0
 
-Config key: ``fragReward``/``frag_reward``)DOCSTRING";
+Config key: ``fragReward``/``frag_reward``
+
+Note: added in 1.3.0)DOCSTRING";
 
     const char *getLastReward = R"DOCSTRING(Returns a reward granted after the last update of state.)DOCSTRING";
 
@@ -341,7 +367,7 @@ If not provided, the default Doom single-player maps will be loaded.
 
 Default value: ``""``
 
-Config key: ``DoomScenarioPath``/``set_doom_scenario_path``)DOCSTRING";
+Config key: ``DoomScenarioPath``/``doom_scenario_path``)DOCSTRING";
 
     const char *setDoomMap = R"DOCSTRING(Sets the map name to be used.
 
@@ -490,7 +516,7 @@ which determines what will be visible on it.
 
 Default value: ``NORMAL``
 
-Config key: ``automapMode``/``set_automap_mode``
+Config key: ``automapMode``/``automap_mode``
 
 Note: added in 1.1.0.)DOCSTRING";
 
@@ -703,7 +729,7 @@ Default value: ``False``
 
 Has no effect when the game is running.
 
-Config key: ``audioSamplingRate``/``audio_samping_rate``
+Config key: ``audioSamplingRate``/``audio_sampling_rate``
 
 See also:
 
