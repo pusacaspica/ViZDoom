@@ -4,14 +4,13 @@
 # This test can be run as Python script or via PyTest
 
 import os
-import re
 
 import vizdoom as vzd
 
 
 def test_load_config():
     print("Testing all keys of config files ...")
-    
+
     config_values = {
         "audio_buffer_enabled": True,
         "audio_buffer_size": 8,
@@ -80,9 +79,11 @@ def test_load_config():
 
         if not hasattr(game, getter):
             continue  # Skip if the getter does not exist
-        
+
         getter_value = getattr(game, getter)()
-        assert getter_value == value or str(getter_value) in str(value), f"Config value for {key} does not match: expected {value}, got {getattr(game, getter)()}"
+        assert getter_value == value or str(getter_value) in str(
+            value
+        ), f"Config value for {key} does not match: expected {value}, got {getattr(game, getter)()}"
 
     os.remove("test_configs.cfg")
 
