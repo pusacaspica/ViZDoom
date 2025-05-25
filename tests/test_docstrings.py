@@ -31,7 +31,7 @@ def _check_object_docstrings(_object):
             # default_value = search_reasult.group(1).strip(".").strip("`")
             search_reasult = re.search(r"Config key: ``(.+)``", method_doc)
             assert search_reasult is not None, f"Method {method} has no config key"
-            config_keys = search_reasult.group(1).split(",")
+            config_keys = search_reasult.group(1).split("/")
             config_keys = [key.strip("`") for key in config_keys if key.strip()]
             if len(config_keys) > 1:
                 assert (
