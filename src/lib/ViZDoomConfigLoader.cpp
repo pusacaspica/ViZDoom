@@ -609,6 +609,22 @@ namespace vizdoom {
                     this->game->setDeathReward(b::lexical_cast<double>(val));
                     continue;
                 }
+                else if (key == "map_exit_reward" || key == "mapexitreward") {
+                    this->game->setMapExitReward(b::lexical_cast<double>(val));
+                    continue;
+                }
+                // else if (key == "health_reward" || key == "healthreward") {
+                //     this->game->setHealthReward(b::lexical_cast<double>(val));
+                //     continue;
+                // }
+                // else if (key == "armor_reward" || key == "armorreward") {
+                //     this->game->setArmorReward(b::lexical_cast<double>(val));
+                //     continue;
+                // }
+                // else if (key == "ammo_reward" || key == "ammoreward") {
+                //     this->game->setAmmoReward(b::lexical_cast<double>(val));
+                //     continue;
+                // }
                 else if (key == "kill_reward" || key == "killreward") {
                     this->game->setKillReward(b::lexical_cast<double>(val));
                     continue;
@@ -623,6 +639,30 @@ namespace vizdoom {
                 }
                 else if (key == "frag_reward" || key == "fragreward") {
                     this->game->setFragReward(b::lexical_cast<double>(val));
+                    continue;
+                }
+                else if (key == "hit_reward" || key == "hitreward") {
+                    this->game->setHitReward(b::lexical_cast<double>(val));
+                    continue;
+                }
+                else if (key == "hit_taken_penalty" || key == "hittakenpenalty") {
+                    this->game->setHitTakenPenalty(this->hitTakenPenalty);
+                    continue;
+                }
+                else if (key == "hit_taken_reward" || key == "hittakenreward") {
+                    this->game->setHitTakenReward(this->hitTakenPenalty);
+                    continue;
+                }
+                else if (key == "damage_made_reward" || key == "damagemadereward") {
+                    this->game->setDamageMadeReward(b::lexical_cast<double>(val)d);
+                    continue;
+                }
+                else if (key == "damage_taken_penalty" || key == "damagetakenpenalty") {
+                    this->game->setDamageTakenPenalty(b::lexical_cast<double>(val));
+                    continue;
+                }
+                else if (key == "damage_taken_reward" || key == "damagetakenreward") {
+                    this->game->setDamageTakenReward(b::lexical_cast<double>(val));
                     continue;
                 }
             }

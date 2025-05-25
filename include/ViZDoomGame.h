@@ -1,6 +1,7 @@
 /*
  Copyright (C) 2016 by Wojciech Jaśkowski, Michał Kempka, Grzegorz Runc, Jakub Toczek, Marek Wydmuch
  Copyright (C) 2017 - 2022 by Marek Wydmuch, Michał Kempka, Wojciech Jaśkowski, and the respective contributors
+ Copyright (C) 2023 - 2025 by Marek Wydmuch, Farama Foundation, and the respective contributors
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -120,6 +121,9 @@ namespace vizdoom {
         void setDeathPenalty(double deathPenalty);
         double getDeathReward();
         void setDeathReward(double deathReward);
+        double getMapExitReward();
+        void setMapExitReward(double mapExitReward);
+
         double getKillReward();
         void setKillReward(double killReward);
         double getSecretReward();
@@ -128,6 +132,19 @@ namespace vizdoom {
         void setItemReward(double itemReward);
         double getFragReward();
         void setFragReward(double fragReward);
+        double getHitReward();
+        void setHitReward(double hitReward);
+        double getHitTakenReward();
+        void setHitTakenReward(double hitTakenReward);
+        double getHitPenalty();
+        void setHitPenalty(double hitPenalty);
+        double getDamageMadeReward();
+        void setDamageMadeReward(double damageMadeReward);
+        double getDamageTakenReward();
+        void setDamageTakenReward(double damageTakenReward);
+        double getDamageTakenPenalty();
+        void setDamageTakenPenalty(double damageTakenPenalty);
+
         double getLastReward();
         double getTotalReward();
 
@@ -234,6 +251,7 @@ namespace vizdoom {
 
         void resetState();
         void updateState();
+        void updateReward();
 
         std::vector<GameVariable> availableGameVariables;
         std::vector<Button> availableButtons;
@@ -252,6 +270,7 @@ namespace vizdoom {
 
         double livingReward;
         double deathPenalty;
+        double mapExitReward;
 
         double killReward;
         int lastKillCount;
@@ -261,10 +280,16 @@ namespace vizdoom {
         int lastItemCount;
         double fragReward;
         int lastFragCount;
+        double hitReward;
+        int lastHitCount;
+        double hitTakenPenalty;
+        int lastHitTakenCount;
+        double damageMadeReward;
+        double lastDamageMade;
+        double damageTakenPenalty;
+        double lastDamageTaken;
 
     private:
-
-
 
     };
 }

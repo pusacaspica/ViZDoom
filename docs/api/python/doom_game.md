@@ -78,6 +78,8 @@ DoomGame is the main object of the ViZDoom library, representing a single instan
 .. autofunction:: vizdoom.DoomGame.set_death_penalty
 .. autofunction:: vizdoom.DoomGame.get_death_reward
 .. autofunction:: vizdoom.DoomGame.set_death_reward
+.. autofunction:: vizdoom.DoomGame.get_map_exit_reward
+.. autofunction:: vizdoom.DoomGame.set_map_exit_reward
 .. autofunction:: vizdoom.DoomGame.get_kill_reward
 .. autofunction:: vizdoom.DoomGame.set_kill_reward
 .. autofunction:: vizdoom.DoomGame.get_item_reward
@@ -86,6 +88,18 @@ DoomGame is the main object of the ViZDoom library, representing a single instan
 .. autofunction:: vizdoom.DoomGame.set_secret_reward
 .. autofunction:: vizdoom.DoomGame.get_frag_reward
 .. autofunction:: vizdoom.DoomGame.set_frag_reward
+.. autofunction:: vizdoom.DoomGame.get_hit_reward
+.. autofunction:: vizdoom.DoomGame.set_hit_reward
+.. autofunction:: vizdoom.DoomGame.get_hit_taken_reward
+.. autofunction:: vizdoom.DoomGame.set_hit_taken_reward
+.. autofunction:: vizdoom.DoomGame.get_hit_penalty
+.. autofunction:: vizdoom.DoomGame.set_hit_penalty
+.. autofunction:: vizdoom.DoomGame.get_damage_made_reward
+.. autofunction:: vizdoom.DoomGame.set_damage_made_reward
+.. autofunction:: vizdoom.DoomGame.get_damage_taken_reward
+.. autofunction:: vizdoom.DoomGame.set_damage_taken_reward
+.. autofunction:: vizdoom.DoomGame.get_damage_taken_penalty
+.. autofunction:: vizdoom.DoomGame.set_damage_taken_penalty
 .. autofunction:: vizdoom.DoomGame.get_last_reward
 .. autofunction:: vizdoom.DoomGame.get_total_reward
 ```

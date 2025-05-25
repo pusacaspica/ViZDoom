@@ -605,7 +605,7 @@ Config key: `deathPenalty`/`death_penalty`
 ### `getDeathReward`
 
 | C++    | `double getDeathReward()`     |
-| :--    | :--                            |
+| :--    | :--                           |
 | Python | `get_death_reward() -> float` |
 
 Returns the reward for the player's death. It is equal to negation of value returned by [`getDeathReward`](#getdeathreward)).
@@ -617,7 +617,7 @@ Note: added in 1.3.0
 ### `setDeathReward`
 
 | C++    | `void setDeathReward(double deathReward)`       |
-| :--    | :--                                               |
+| :--    | :--                                             |
 | Python | `set_death_reward(death_reward: float) -> None` |
 
 Sets a reward for the player's death. A negative value is also allowed.
@@ -627,6 +627,35 @@ Default value: 0
 Config key: `deathReward`/`death_reward`
 
 Note: added in 1.3.0
+
+
+---
+### `getMapExitReward`
+
+| C++    | `double getMapExitReward()`      |
+| :--    | :--                              |
+| Python | `get_map_exit_reward() -> float` |
+
+Returns the reward for finishing a map.
+
+Note: added in 1.3.0
+
+
+---
+### `setMapExitReward`
+
+| C++    | `void setMapExitReward(double mapExitReward)`         |
+| :--    | :--                                                   |
+| Python | `set_map_exit_reward(map_exit_reward: float) -> None` |
+
+Sets a reward for finishing a map (finding an exit or succeeding in other programmed objective). A negative value is also allowed.
+
+Default value: 0
+
+Config key: `mapExitReward`/`map_exit_reward`
+
+Note: added in 1.3.0
+
 
 
 ---
@@ -737,6 +766,194 @@ Sets the reward granted to the player for scoring a frag. A negative value is al
 Default value: 0
 
 Config key: `fragReward`/`frag_reward`
+
+Note: added in 1.3.0
+
+
+---
+### `getHitReward`
+
+| C++    | `double getHitReward()`     |
+| :--    | :--                         |
+| Python | `get_hit_reward() -> float` |
+
+Returns the reward granted to the player for hitting (damaging) an enemy.
+
+Note: added in 1.3.0
+
+
+---
+### `setHitReward`
+
+| C++    | `void setHitReward(double hitReward)`       |
+| :--    | :--                                         |
+| Python | `set_hit_reward(hit_reward: float) -> None` |
+
+Sets the reward granted to the player for hitting (damaging) an enemy.
+The reward is the same despite the amount of damage dealt.
+A negative value is also allowed.
+
+Default value: 0
+
+Config key: `hitReward`/`hit_reward`
+
+Note: added in 1.3.0
+
+
+---
+### `getHitTakenReward`
+
+| C++    | `double getHitTakenReward()`     |
+| :--    | :--                              |
+| Python | `get_hit_taken_reward() -> float` |
+
+Returns the reward granted to the player when hit (damaged) by an enemy.
+The reward is the same despite the amount of damage taken.
+
+Note: added in 1.3.0
+
+
+---
+### `setHitTakenReward`
+
+| C++    | `void setHitTakenReward(double hitTakenReward)`       |
+| :--    | :--                                                   |
+| Python | `set_hit_taken_reward(hit_taken_reward: float) -> None` |
+
+Sets the reward granted to the player when hit (damaged) by an enemy.
+The reward is the same despite the amount of damage taken.
+A negative value is also allowed.
+
+Default value: 0
+
+Config key: `hitTakenReward`/`hit_taken_reward`
+
+Note: added in 1.3.0
+
+
+---
+### `getHitPenalty`
+
+| C++    | `double getHitPenalty()`     |
+| :--    | :--                          |
+| Python | `get_hit_penalty() -> float` |
+
+Returns the penalty for the player when hit (damaged) by an enemy.
+The penalty is the same despite the amount of damage taken.
+It is equal to negation of value returned by [`getHitTakenReward`](#gethittakenreward).
+
+Note: added in 1.3.0
+
+
+---
+### `setHitPenalty`
+
+| C++    | `void setHitPenalty(double hitPenalty)`       |
+| :--    | :--                                           |
+| Python | `set_hit_penalty(hit_penalty: float) -> None` |
+
+Sets a penalty for the player when hit (damaged) by an enemy.
+The penalty is the same despite the amount of damage taken.
+Note that in case of a negative value, the player will be rewarded upon being hit.
+
+Default value: 0
+
+Config key: `hitPenalty`/`hit_penalty`
+
+Note: added in 1.3.0
+
+
+---
+### `getDamageMadeReward`
+
+| C++    | `double getDamageMadeReward()`     |
+| :--    | :--                                |
+| Python | `get_damage_made_reward() -> float` |
+
+Returns the reward granted to the player for damaging an enemy, proportional to the damage dealt.
+Every point of damage dealt to an enemy will result in a reward equal to the value returned by this method.
+
+Note: added in 1.3.0
+
+
+---
+### `setDamageMadeReward`
+
+| C++    | `void setDamageMadeReward(double damageMadeReward)`       |
+| :--    | :--                                                        |
+| Python | `set_damage_made_reward(damage_made_reward: float) -> None` |
+
+Sets the reward granted to the player for damaging an enemy, proportional to the damage dealt.
+Every point of damage dealt to an enemy will result in a reward equal to the value returned by this method.
+A negative value is also allowed.
+
+
+Default value: 0
+
+Config key: `damageMadeReward`/`damage_made_reward`
+
+Note: added in 1.3.0
+
+
+---
+### `getDamageTakenReward`
+
+| C++    | `double getDamageTakenReward()`     |
+| :--    | :--                                  |
+| Python | `get_damage_taken_reward() -> float` |
+
+Returns the reward granted to the player when damaged by an enemy, proportional to the damage received.
+Every point of damage taken will result in a reward equal to the value returned by this method.
+
+Note: added in 1.3.0
+
+
+---
+### `setDamageTakenReward`
+
+| C++    | `void setDamageTakenReward(double DamageTakenReward)`       |
+| :--    | :--                                                             |
+| Python | `set_damage_taken_reward(damage_taken_reward: float) -> None` |
+
+Sets the reward granted to the player when damaged by an enemy, proportional to the damage received.
+Every point of damage taken will result in a reward equal to the set value.
+A negative value is also allowed.
+
+Default value: 0
+
+Config key: `DamageTakenReward`/`damage_taken_reward`
+
+Note: added in 1.3.0
+
+
+---
+### `getDamageTakenPenalty`
+
+| C++    | `double getDamageTakenPenalty()`     |
+| :--    | :--                                   |
+| Python | `get_damage_taken_penalty() -> float` |
+
+Returns the penalty for the player when damaged by an enemy, proportional to the damage received.
+Every point of damage taken will result in a penalty equal to the value returned by this method.
+It is equal to negation of value returned by [`getDamageTakenReward`](#getdamagerewardrecived).
+
+Note: added in 1.3.0
+
+
+---
+### `setDamageTakenPenalty`
+
+| C++    | `void setDamageTakenPenalty(double DamageTakenPenalty)`       |
+| :--    | :--                                                               |
+| Python | `set_damage_taken_penalty(damage_taken_penalty: float) -> None` |
+
+Sets a penalty for the player when damaged by an enemy, proportional to the damage received.
+Every point of damage taken will result in a penalty equal to the set value.
+Note that in case of a negative value, the player will be rewarded upon receiving damage.
+
+Default value: 0
+
+Config key: `damageRecivedPenalty`/`damage_taken_penalty`
 
 Note: added in 1.3.0
 

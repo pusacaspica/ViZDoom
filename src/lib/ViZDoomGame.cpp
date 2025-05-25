@@ -40,14 +40,22 @@
 namespace vizdoom {
     DoomGame::DoomGame() {
         this->running = false;
+
         this->lastReward = 0;
         this->lastMapReward = 0;
         this->deathPenalty = 0;
+        this->mapExitReward = 0;
+
         this->livingReward = 0;
         this->killReward = 0;
         this->secretReward = 0;
         this->itemReward = 0;
         this->fragReward = 0;
+        this->hitReward = 0;
+        this->hitTakenPenalty = 0;
+        this->damageMadeReward = 0;
+        this->damageTakenPenalty = 0;
+
         this->summaryReward = 0;
         this->lastMapTic = 0;
         this->nextStateNumber = 1;
@@ -184,6 +192,71 @@ namespace vizdoom {
         this->summaryReward = 0;
     }
 
+    void DoomGame::updateReward() {
+        double reward = 0;
+
+        /* Programmed map reward */
+        double mapReward = doomFixedToDouble(this->doomController->getMapReward());
+        reward += mapReward - this->lastMapReward;
+        this->lastMapReward = mapReward;
+
+        /* Common rewards */
+        int liveTime = this->doomController->getMapLastTic() - this->lastMapTic;
+        reward += (liveTime > 0 ? liveTime : 0) * this->livingReward;
+        if (this->doomController->isPlayerDead()) reward -= this->deathPenalty;
+        else if (this->doomController->isMapEnded()) reward += this->doomController->getMapExitReward();
+
+        /* Kill reward */
+        int killCount = this->doomController->getKillCount();
+        if (this->killReward != 0 && killCount > this->lastKillCount) reward += (killCount - this->lastKillCount) * this->killReward;
+        this->lastKillCount = killCount;
+        
+        /* Secret reward */
+        int secretCount = this->doomController->getSecretCount();
+        if (this->secretReward != 0 && secretCount > this->lastSecretCount) reward += (secretCount - this->lastSecretCount) * this->secretReward;
+        this->lastSecretCount = secretCount;
+
+        /* Item reward */
+        int itemCount = this->doomController->getItemCount();
+        if (this->itemReward != 0 && itemCount > this->lastItemCount) reward += (itemCount - this->lastItemCount) * this->itemReward;
+        this->lastItemCount = itemCount;
+
+        /* Frag reward */
+        int fragCount = this->doomController->getFragCount();
+        if (this->fragReward != 0 && fragCount > this->lastFragCount) reward += (fragCount - this->lastFragCount) * this->fragReward;
+        this->lastFragCount = fragCount;
+
+        /* Hit reward */
+        int hitCount = this->doomController->getHitCount();
+        if (this->hitReward != 0 && hitCount > this->lastHitCount) reward += (hitCount - this->lastHitCount) * this->hitReward;
+        this->lastHitCount = hitCount;
+        
+        /* Hit taken penalty */
+        int hitTakenCount = this->doomController->getHitTakenCount();
+        if (this->hitTakenPenalty != 0 && hitTakenCount > this->lastHitTakenCount) {
+            reward -= (hitTakenCount - this->lastHitTakenCount) * this->hitTakenPenalty;
+        }
+        this->lastHitTakenCount = hitTakenCount;
+        
+        /* Damage made reward */
+        double damageMade = this->doomController->getDamageMade();
+        if (this->damageMadeReward != 0 && damageMade > this->lastDamageMade) {
+            reward += (damageMade - this->lastDamageMade) * this->damageMadeReward;
+        }
+        this->lastDamageMade = damageMade;
+
+        /* Damage received penalty */
+        double damageTaken = this->doomController->getDamageReceived();
+        if (this->damageTakenPenalty != 0 && damageTaken > this->lastDamageTaken) {
+            reward -= (damageTaken - this->lastDamageTaken) * this->damageTakenPenalty;
+        }
+        this->lastDamageTaken = damageTaken;
+
+        /* Update summary reward */
+        this->summaryReward += reward;
+        this->lastReward = reward;
+    }
+
     void DoomGame::updateState() {
 
         /* Update last action */
@@ -199,41 +272,7 @@ namespace vizdoom {
         }
 
         /* Update reward */
-        double reward = 0;
-
-        /* Programmed map reward */
-        double mapReward = doomFixedToDouble(this->doomController->getMapReward());
-        reward += mapReward - this->lastMapReward;
-        this->lastMapReward = mapReward;
-
-        /* Common rewards */
-        int liveTime = this->doomController->getMapLastTic() - this->lastMapTic;
-        reward += (liveTime > 0 ? liveTime : 0) * this->livingReward;
-        if (this->doomController->isPlayerDead()) reward -= this->deathPenalty;
-
-        /* Kill reward */
-        int killCount = this->doomController->getKillCount();
-        if (killCount > this->lastKillCount) reward += (killCount - this->lastKillCount) * this->killReward;
-        this->lastKillCount = killCount;
-        
-        /* Secret reward */
-        int secretCount = this->doomController->getSecretCount();
-        if (secretCount > this->lastSecretCount) reward += (secretCount - this->lastSecretCount) * this->secretReward;
-        this->lastSecretCount = secretCount;
-
-        /* Item reward */
-        int itemCount = this->doomController->getItemCount();
-        if (itemCount > this->lastItemCount) reward += (itemCount - this->lastItemCount) * this->itemReward;
-        this->lastItemCount = itemCount;
-
-        /* Frag reward */
-        int fragCount = this->doomController->getFragCount();
-        if (fragCount > this->lastFragCount) reward += (fragCount - this->lastFragCount) * this->fragReward;
-        this->lastFragCount = fragCount;
-
-        /* Update summary reward */
-        this->summaryReward += reward;
-        this->lastReward = reward;
+        this->updateReward();
 
         if (this->doomController->isRunDoomAsync()) this->lastMapTic = this->doomController->getMapTic();
         else this->lastMapTic = this->doomController->getMapLastTic();
@@ -527,6 +566,10 @@ namespace vizdoom {
 
     void DoomGame::setDeathReward(double deathReward) { this->deathPenalty = -deathReward; }
 
+    double DoomGame::getMapExitReward() { return this->mapExitReward; }
+
+    void DoomGame::setMapExitReward(double mapExitReward) { this->mapExitReward = mapExitReward; }
+
     double DoomGame::getKillReward() { return this->killReward; }
 
     void DoomGame::setKillReward(double killReward) { this->killReward = killReward; }
@@ -542,6 +585,30 @@ namespace vizdoom {
     double DoomGame::getFragReward() { return this->fragReward; }
 
     void DoomGame::setFragReward(double fragReward) { this->fragReward = fragReward; }
+
+    double DoomGame::getHitReward() { return this->hitReward; }
+
+    void DoomGame::setHitReward(double hitReward) { this->hitReward = hitReward; }
+
+    double DoomGame::getHitTakenReward() { return -this->hitTakenPenalty; }
+
+    void DoomGame::setHitTakenReward(double hitTakenReward) { this->hitTakenRPenalty = -hitTakenReward; }
+
+    double DoomGame::getHitPenalty() { return this->hitPenalty; }
+
+    void DoomGame::setHitPenalty(double hitPenalty) { this->hitPenalty = hitPenalty; }
+
+    double DoomGame::getDamageMadeReward() { return this->damageMadeReward; }
+
+    void DoomGame::setDamageMadeReward(double damageMadeReward) { this->damageMadeReward = damageMadeReward; }
+
+    double DoomGame::getDamageTakenReward() { return -this->DamageTakenPenalty; }
+
+    void DoomGame::setDamageTakenReward(double DamageTakenReward) { this->DamageTakenPenalty = -DamageTakenReward; }
+
+    double DoomGame::getDamageTakenPenalty() { return this->damageRecivedPenalty; }
+
+    void DoomGame::setDamageTakenPenalty(double damageRecivedPenalty) { this->damageRecivedPenalty = damageRecivedPenalty; }
 
     double DoomGame::getLastReward() {
         if (!this->isRunning()) throw ViZDoomIsNotRunningException();

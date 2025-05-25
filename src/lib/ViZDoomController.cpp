@@ -1,7 +1,7 @@
 /*
  Copyright (C) 2016 by Wojciech Jaśkowski, Michał Kempka, Grzegorz Runc, Jakub Toczek, Marek Wydmuch
  Copyright (C) 2017 - 2022 by Marek Wydmuch, Michał Kempka, Wojciech Jaśkowski, and the respective contributors
- Copyright (C) 2023 - 2024 by Marek Wydmuch, Farama Foundation, and the respective contributors
+ Copyright (C) 2023 - 2025 by Marek Wydmuch, Farama Foundation, and the respective contributors
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -1076,6 +1076,14 @@ namespace vizdoom {
     int DoomController::getSecretCount() { return this->gameState->PLAYER_SECRETCOUNT; }
 
     int DoomController::getFragCount() { return this->gameState->PLAYER_FRAGCOUNT; }
+
+    int DoomController::getHitCount() { return this->gameState->PLAYER_HITCOUNT; }
+    
+    int DoomController::getHitsTaken() { return this->gameState->PLAYER_HITS_TAKEN; }
+    
+    int DoomController::getDamageCount() { return this->gameState->PLAYER_DAMAGECOUNT; }
+
+    int DoomController::getDamageTaken() { return this->gameState->PLAYER_DAMAGE_TAKEN; }
 
     bool DoomController::isPlayerDead() { return this->gameState->PLAYER_DEAD; }
 
