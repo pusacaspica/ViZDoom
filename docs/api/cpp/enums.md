@@ -5,7 +5,7 @@ The declarations of all the enums can be found in the `include/ViZDoomTypes.h` h
 
 ## `Mode`
 
-Enum type that defines all supported modes.
+Enum type that defines all supported modes for controlling the game.
 
 - **PLAYER** - synchronous player mode
 - **SPECTATOR** - synchronous spectator mode

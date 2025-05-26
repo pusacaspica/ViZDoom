@@ -136,14 +136,18 @@ namespace vizdoom {
         void setHitReward(double hitReward);
         double getHitTakenReward();
         void setHitTakenReward(double hitTakenReward);
-        double getHitPenalty();
-        void setHitPenalty(double hitPenalty);
+        double getHitTakenPenalty();
+        void setHitTakenPenalty(double hitTakenPenalty);
         double getDamageMadeReward();
         void setDamageMadeReward(double damageMadeReward);
         double getDamageTakenReward();
         void setDamageTakenReward(double damageTakenReward);
         double getDamageTakenPenalty();
         void setDamageTakenPenalty(double damageTakenPenalty);
+        // double getHealthReward();
+        // void setHealthReward(double healthReward);
+        // double getArmorReward();
+        // void setArmorReward(double armorReward);
 
         double getLastReward();
         double getTotalReward();
@@ -283,11 +287,15 @@ namespace vizdoom {
         double hitReward;
         int lastHitCount;
         double hitTakenPenalty;
-        int lastHitTakenCount;
+        int lastHitsTaken;
         double damageMadeReward;
-        double lastDamageMade;
+        double lastDamageCount;
         double damageTakenPenalty;
         double lastDamageTaken;
+        double healthReward;
+        int lastHealth;
+        double armorReward;
+        int lastArmor;
 
     private:
 

@@ -93,7 +93,7 @@ DoomGame is the main object of the ViZDoom library, representing a single instan
 .. autofunction:: vizdoom.DoomGame.get_hit_taken_reward
 .. autofunction:: vizdoom.DoomGame.set_hit_taken_reward
 .. autofunction:: vizdoom.DoomGame.get_hit_penalty
-.. autofunction:: vizdoom.DoomGame.set_hit_penalty
+.. autofunction:: vizdoom.DoomGame.set_hit_taken_penalty
 .. autofunction:: vizdoom.DoomGame.get_damage_made_reward
 .. autofunction:: vizdoom.DoomGame.set_damage_made_reward
 .. autofunction:: vizdoom.DoomGame.get_damage_taken_reward

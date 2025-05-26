@@ -3,7 +3,6 @@
  Copyright (C) 2017 - 2022 by Marek Wydmuch, Michał Kempka, Wojciech Jaśkowski, and the respective contributors
  Copyright (C) 2023 - 2025 by Marek Wydmuch, Farama Foundation, and the respective contributors
 
-
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
@@ -278,6 +277,8 @@ namespace vizdoom {
         int getHitsTaken();
         int getDamageCount();
         int getDamageTaken();
+        int getHealth();
+        int getArmor();
         bool isPlayerDead();
 
         int getPlayerCount();

@@ -1085,6 +1085,10 @@ namespace vizdoom {
 
     int DoomController::getDamageTaken() { return this->gameState->PLAYER_DAMAGE_TAKEN; }
 
+    int DoomController::getHealth() { return this->gameState->PLAYER_HEALTH; }
+
+    int DoomController::getArmor() { return this->gameState->PLAYER_ARMOR; }
+
     bool DoomController::isPlayerDead() { return this->gameState->PLAYER_DEAD; }
 
     int DoomController::getPlayerCount() { return this->gameState->PLAYER_COUNT; }

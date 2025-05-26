@@ -657,7 +657,6 @@ Config key: `mapExitReward`/`map_exit_reward`
 Note: added in 1.3.0
 
 
-
 ---
 ### `getKillReward`
 
@@ -803,8 +802,8 @@ Note: added in 1.3.0
 ---
 ### `getHitTakenReward`
 
-| C++    | `double getHitTakenReward()`     |
-| :--    | :--                              |
+| C++    | `double getHitTakenReward()`      |
+| :--    | :--                               |
 | Python | `get_hit_taken_reward() -> float` |
 
 Returns the reward granted to the player when hit (damaged) by an enemy.
@@ -816,8 +815,8 @@ Note: added in 1.3.0
 ---
 ### `setHitTakenReward`
 
-| C++    | `void setHitTakenReward(double hitTakenReward)`       |
-| :--    | :--                                                   |
+| C++    | `void setHitTakenReward(double hitTakenReward)`         |
+| :--    | :--                                                     |
 | Python | `set_hit_taken_reward(hit_taken_reward: float) -> None` |
 
 Sets the reward granted to the player when hit (damaged) by an enemy.
@@ -832,11 +831,11 @@ Note: added in 1.3.0
 
 
 ---
-### `getHitPenalty`
+### `getHitTakenPenalty`
 
-| C++    | `double getHitPenalty()`     |
-| :--    | :--                          |
-| Python | `get_hit_penalty() -> float` |
+| C++    | `double getHitTakenPenalty()`      |
+| :--    | :--                                |
+| Python | `get_hit_taken_penalty() -> float` |
 
 Returns the penalty for the player when hit (damaged) by an enemy.
 The penalty is the same despite the amount of damage taken.
@@ -846,11 +845,11 @@ Note: added in 1.3.0
 
 
 ---
-### `setHitPenalty`
+### `setHitTakenPenalty`
 
-| C++    | `void setHitPenalty(double hitPenalty)`       |
-| :--    | :--                                           |
-| Python | `set_hit_penalty(hit_penalty: float) -> None` |
+| C++    | `void setHitTakenPenalty(double hitTakenPenalty)`         |
+| :--    | :--                                                       |
+| Python | `set_hit_taken_penalty(hit_taken_penalty: float) -> None` |
 
 Sets a penalty for the player when hit (damaged) by an enemy.
 The penalty is the same despite the amount of damage taken.
@@ -858,7 +857,7 @@ Note that in case of a negative value, the player will be rewarded upon being hi
 
 Default value: 0
 
-Config key: `hitPenalty`/`hit_penalty`
+Config key: `hitTakenPenalty`/`hit_taken_penalty`
 
 Note: added in 1.3.0
 
@@ -866,8 +865,8 @@ Note: added in 1.3.0
 ---
 ### `getDamageMadeReward`
 
-| C++    | `double getDamageMadeReward()`     |
-| :--    | :--                                |
+| C++    | `double getDamageMadeReward()`      |
+| :--    | :--                                 |
 | Python | `get_damage_made_reward() -> float` |
 
 Returns the reward granted to the player for damaging an enemy, proportional to the damage dealt.
@@ -879,8 +878,8 @@ Note: added in 1.3.0
 ---
 ### `setDamageMadeReward`
 
-| C++    | `void setDamageMadeReward(double damageMadeReward)`       |
-| :--    | :--                                                        |
+| C++    | `void setDamageMadeReward(double damageMadeReward)`         |
+| :--    | :--                                                         |
 | Python | `set_damage_made_reward(damage_made_reward: float) -> None` |
 
 Sets the reward granted to the player for damaging an enemy, proportional to the damage dealt.
@@ -898,7 +897,7 @@ Note: added in 1.3.0
 ---
 ### `getDamageTakenReward`
 
-| C++    | `double getDamageTakenReward()`     |
+| C++    | `double getDamageTakenReward()`      |
 | :--    | :--                                  |
 | Python | `get_damage_taken_reward() -> float` |
 
@@ -911,8 +910,8 @@ Note: added in 1.3.0
 ---
 ### `setDamageTakenReward`
 
-| C++    | `void setDamageTakenReward(double DamageTakenReward)`       |
-| :--    | :--                                                             |
+| C++    | `void setDamageTakenReward(double DamageTakenReward)`         |
+| :--    | :--                                                           |
 | Python | `set_damage_taken_reward(damage_taken_reward: float) -> None` |
 
 Sets the reward granted to the player when damaged by an enemy, proportional to the damage received.
@@ -929,7 +928,7 @@ Note: added in 1.3.0
 ---
 ### `getDamageTakenPenalty`
 
-| C++    | `double getDamageTakenPenalty()`     |
+| C++    | `double getDamageTakenPenalty()`      |
 | :--    | :--                                   |
 | Python | `get_damage_taken_penalty() -> float` |
 
@@ -943,8 +942,8 @@ Note: added in 1.3.0
 ---
 ### `setDamageTakenPenalty`
 
-| C++    | `void setDamageTakenPenalty(double DamageTakenPenalty)`       |
-| :--    | :--                                                               |
+| C++    | `void setDamageTakenPenalty(double DamageTakenPenalty)`         |
+| :--    | :--                                                             |
 | Python | `set_damage_taken_penalty(damage_taken_penalty: float) -> None` |
 
 Sets a penalty for the player when damaged by an enemy, proportional to the damage received.

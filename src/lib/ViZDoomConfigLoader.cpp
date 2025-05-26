@@ -1,6 +1,7 @@
 /*
  Copyright (C) 2016 by Wojciech Jaśkowski, Michał Kempka, Grzegorz Runc, Jakub Toczek, Marek Wydmuch
  Copyright (C) 2017 - 2022 by Marek Wydmuch, Michał Kempka, Wojciech Jaśkowski, and the respective contributors
+ Copyright (C) 2023 - 2025 by Marek Wydmuch, Farama Foundation, and the respective contributors
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -613,18 +614,6 @@ namespace vizdoom {
                     this->game->setMapExitReward(b::lexical_cast<double>(val));
                     continue;
                 }
-                // else if (key == "health_reward" || key == "healthreward") {
-                //     this->game->setHealthReward(b::lexical_cast<double>(val));
-                //     continue;
-                // }
-                // else if (key == "armor_reward" || key == "armorreward") {
-                //     this->game->setArmorReward(b::lexical_cast<double>(val));
-                //     continue;
-                // }
-                // else if (key == "ammo_reward" || key == "ammoreward") {
-                //     this->game->setAmmoReward(b::lexical_cast<double>(val));
-                //     continue;
-                // }
                 else if (key == "kill_reward" || key == "killreward") {
                     this->game->setKillReward(b::lexical_cast<double>(val));
                     continue;
@@ -646,15 +635,15 @@ namespace vizdoom {
                     continue;
                 }
                 else if (key == "hit_taken_penalty" || key == "hittakenpenalty") {
-                    this->game->setHitTakenPenalty(this->hitTakenPenalty);
+                    this->game->setHitTakenPenalty(b::lexical_cast<double>(val));
                     continue;
                 }
                 else if (key == "hit_taken_reward" || key == "hittakenreward") {
-                    this->game->setHitTakenReward(this->hitTakenPenalty);
+                    this->game->setHitTakenReward(b::lexical_cast<double>(val));
                     continue;
                 }
                 else if (key == "damage_made_reward" || key == "damagemadereward") {
-                    this->game->setDamageMadeReward(b::lexical_cast<double>(val)d);
+                    this->game->setDamageMadeReward(b::lexical_cast<double>(val));
                     continue;
                 }
                 else if (key == "damage_taken_penalty" || key == "damagetakenpenalty") {
@@ -665,6 +654,14 @@ namespace vizdoom {
                     this->game->setDamageTakenReward(b::lexical_cast<double>(val));
                     continue;
                 }
+                // else if (key == "health_reward" || key == "healthreward") {
+                //     this->game->setHealthReward(b::lexical_cast<double>(val));
+                //     continue;
+                // }
+                // else if (key == "armor_reward" || key == "armorreward") {
+                //     this->game->setArmorReward(b::lexical_cast<double>(val));
+                //     continue;
+                // }
             }
             catch (b::bad_lexical_cast &) {
                 std::cerr << "WARNING! Loading config from: \"" << filePath << "\". Float value expected instead of: " <<

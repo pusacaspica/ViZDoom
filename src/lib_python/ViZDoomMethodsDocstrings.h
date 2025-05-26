@@ -264,7 +264,7 @@ Note: added in 1.3.0)DOCSTRING";
 
 Note: added in 1.3.0)DOCSTRING";
 
-    const char *setMapExitReward = R"DOCSTRING(Sets a reward for finishing a map (finding an exit or succeding in other programmed objective). A negative value is also allowed.
+    const char *setMapExitReward = R"DOCSTRING(Sets a reward for finishing a map (finding an exit or succeeding in other programmed objective). A negative value is also allowed.
 
 Default value: 0
 
@@ -320,11 +320,11 @@ Config key: ``fragReward``/``frag_reward``
 
 Note: added in 1.3.0)DOCSTRING";
 
-    const char *getHitReward = R"DOCSTRING(Returns the reward granted to the player for hitting (damaging) an enemy. 
+    const char *getHitReward = R"DOCSTRING(Returns the reward granted to the player for hitting (damaging) an enemy.
 
 Note: added in 1.3.0)DOCSTRING";
 
-    const char *setHitReward = R"DOCSTRING(Sets the reward granted to the player for hitting (damaging) an enemy. 
+    const char *setHitReward = R"DOCSTRING(Sets the reward granted to the player for hitting (damaging) an enemy.
 The reward is the same despite the amount of damage dealt.
 A negative value is also allowed.
 
@@ -349,19 +349,19 @@ Config key: ``hitTakenReward``/``hit_taken_reward``
 
 Note: added in 1.3.0)DOCSTRING";
 
-    const char *getHitPenalty = R"DOCSTRING(Returns the penalty for the player when hit (damaged) by an enemy. 
+    const char *getHitTakenPenalty = R"DOCSTRING(Returns the penalty for the player when hit (damaged) by an enemy.
 The penalty is the same despite the amount of damage taken.
 It is equal to negation of value returned by :meth:`get_hit_taken_reward`.
 
 Note: added in 1.3.0)DOCSTRING";
 
-    const char *setHitPenalty = R"DOCSTRING(Sets a penalty for the player when hit (damaged) by an enemy.
+    const char *setHitTakenPenalty = R"DOCSTRING(Sets a penalty for the player when hit (damaged) by an enemy.
 The penalty is the same despite the amount of damage taken.
 Note that in case of a negative value, the player will be rewarded upon being hit.
 
 Default value: 0
 
-Config key: ``hitPenalty``/``hit_penalty``
+Config key: ``hitTakenPenalty``/``hit_taken_penalty``
 
 Note: added in 1.3.0)DOCSTRING";
 
@@ -370,7 +370,7 @@ Every point of damage dealt to an enemy will result in a reward equal to the val
 
 Note: added in 1.3.0)DOCSTRING";
 
-    const char *setDamageMadeReward = R"DOCSTRING(Sets the reward granted to the player for damaging an enemy, proportional to the damage dealt. 
+    const char *setDamageMadeReward = R"DOCSTRING(Sets the reward granted to the player for damaging an enemy, proportional to the damage dealt.
 Every point of damage dealt to an enemy will result in a reward equal to the value returned by this method.
 A negative value is also allowed.
 
@@ -396,13 +396,13 @@ Config key: ``DamageTakenReward``/``damage_taken_reward``
 
 Note: added in 1.3.0)DOCSTRING";
 
-    const char *getDamageTakenPenalty = R"DOCSTRING(Returns the penalty for the player when damaged by an enemy, proportional to the damage received. 
+    const char *getDamageTakenPenalty = R"DOCSTRING(Returns the penalty for the player when damaged by an enemy, proportional to the damage received.
 Every point of damage taken will result in a penalty equal to the value returned by this method.
 It is equal to negation of value returned by :meth:`get_damage_taken_reward`.
 
 Note: added in 1.3.0)DOCSTRING";
 
-    const char *setDamageTakenPenalty = R"DOCSTRING(Sets a penalty for the player when damaged by an enemy, proportional to the damage received. 
+    const char *setDamageTakenPenalty = R"DOCSTRING(Sets a penalty for the player when damaged by an enemy, proportional to the damage received.
 Every point of damage taken will result in a penalty equal to the set value.
 Note that in case of a negative value, the player will be rewarded upon receiving damage.
 

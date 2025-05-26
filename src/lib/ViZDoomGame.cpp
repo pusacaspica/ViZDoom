@@ -1,6 +1,7 @@
 /*
  Copyright (C) 2016 by Wojciech Jaśkowski, Michał Kempka, Grzegorz Runc, Jakub Toczek, Marek Wydmuch
  Copyright (C) 2017 - 2022 by Marek Wydmuch, Michał Kempka, Wojciech Jaśkowski, and the respective contributors
+ Copyright (C) 2023 - 2025 by Marek Wydmuch, Farama Foundation, and the respective contributors
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -55,6 +56,8 @@ namespace vizdoom {
         this->hitTakenPenalty = 0;
         this->damageMadeReward = 0;
         this->damageTakenPenalty = 0;
+        this->healthReward = 0;
+        this->armorReward = 0;
 
         this->summaryReward = 0;
         this->lastMapTic = 0;
@@ -204,7 +207,7 @@ namespace vizdoom {
         int liveTime = this->doomController->getMapLastTic() - this->lastMapTic;
         reward += (liveTime > 0 ? liveTime : 0) * this->livingReward;
         if (this->doomController->isPlayerDead()) reward -= this->deathPenalty;
-        else if (this->doomController->isMapEnded()) reward += this->doomController->getMapExitReward();
+        else if (this->doomController->isMapEnded()) reward += this->mapExitReward;
 
         /* Kill reward */
         int killCount = this->doomController->getKillCount();
@@ -232,21 +235,21 @@ namespace vizdoom {
         this->lastHitCount = hitCount;
         
         /* Hit taken penalty */
-        int hitTakenCount = this->doomController->getHitTakenCount();
-        if (this->hitTakenPenalty != 0 && hitTakenCount > this->lastHitTakenCount) {
-            reward -= (hitTakenCount - this->lastHitTakenCount) * this->hitTakenPenalty;
+        int hitsTaken = this->doomController->getHitsTaken();
+        if (this->hitTakenPenalty != 0 && hitsTaken > this->lastHitsTaken) {
+            reward -= (hitsTaken - this->lastHitsTaken) * this->hitTakenPenalty;
         }
-        this->lastHitTakenCount = hitTakenCount;
+        this->lastHitsTaken = hitsTaken;
         
         /* Damage made reward */
-        double damageMade = this->doomController->getDamageMade();
-        if (this->damageMadeReward != 0 && damageMade > this->lastDamageMade) {
-            reward += (damageMade - this->lastDamageMade) * this->damageMadeReward;
+        double damageCount = this->doomController->getDamageCount();
+        if (this->damageMadeReward != 0 && damageCount > this->lastDamageCount) {
+            reward += (damageCount - this->lastDamageCount) * this->damageMadeReward;
         }
-        this->lastDamageMade = damageMade;
+        this->lastDamageCount = damageCount;
 
         /* Damage received penalty */
-        double damageTaken = this->doomController->getDamageReceived();
+        double damageTaken = this->doomController->getDamageTaken();
         if (this->damageTakenPenalty != 0 && damageTaken > this->lastDamageTaken) {
             reward -= (damageTaken - this->lastDamageTaken) * this->damageTakenPenalty;
         }
@@ -592,23 +595,23 @@ namespace vizdoom {
 
     double DoomGame::getHitTakenReward() { return -this->hitTakenPenalty; }
 
-    void DoomGame::setHitTakenReward(double hitTakenReward) { this->hitTakenRPenalty = -hitTakenReward; }
+    void DoomGame::setHitTakenReward(double hitTakenReward) { this->hitTakenPenalty = -hitTakenReward; }
 
-    double DoomGame::getHitPenalty() { return this->hitPenalty; }
+    double DoomGame::getHitTakenPenalty() { return this->hitTakenPenalty; }
 
-    void DoomGame::setHitPenalty(double hitPenalty) { this->hitPenalty = hitPenalty; }
+    void DoomGame::setHitTakenPenalty(double hitTakenPenalty) { this->hitTakenPenalty = hitTakenPenalty; }
 
     double DoomGame::getDamageMadeReward() { return this->damageMadeReward; }
 
     void DoomGame::setDamageMadeReward(double damageMadeReward) { this->damageMadeReward = damageMadeReward; }
 
-    double DoomGame::getDamageTakenReward() { return -this->DamageTakenPenalty; }
+    double DoomGame::getDamageTakenReward() { return -this->damageTakenPenalty; }
 
-    void DoomGame::setDamageTakenReward(double DamageTakenReward) { this->DamageTakenPenalty = -DamageTakenReward; }
+    void DoomGame::setDamageTakenReward(double damageTakenReward) { this->damageTakenPenalty = -damageTakenReward; }
 
-    double DoomGame::getDamageTakenPenalty() { return this->damageRecivedPenalty; }
+    double DoomGame::getDamageTakenPenalty() { return this->damageTakenPenalty; }
 
-    void DoomGame::setDamageTakenPenalty(double damageRecivedPenalty) { this->damageRecivedPenalty = damageRecivedPenalty; }
+    void DoomGame::setDamageTakenPenalty(double damageTakenPenalty) { this->damageTakenPenalty = damageTakenPenalty; }
 
     double DoomGame::getLastReward() {
         if (!this->isRunning()) throw ViZDoomIsNotRunningException();
