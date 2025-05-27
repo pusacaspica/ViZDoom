@@ -78,16 +78,16 @@ PYBIND11_MODULE(vizdoom, vz){
     #define ENUM_CLASS_VAL_2_PYT(c, v) .value( #v , c::v )
     /* .value("VALUE", class::VALUE) */
 
-    #define FUNC_2_PYT(n, f) vz.def( n , f , docstrings::f )
+    #define FUNC_2_PYT(n, f) vz.def( n , f , pyb::doc(docstrings::f) )
     /* vz.def("name", function, docstrings::function) */
 
-    #define FUNC_2_PYT_WITH_ARGS(n, f, ...) vz.def( n , f , docstrings::f , __VA_ARGS__ )
+    #define FUNC_2_PYT_WITH_ARGS(n, f, ...) vz.def( n , f , pyb::doc(docstrings::f) , __VA_ARGS__ )
     /* vz.def("name", function, docstrings::function, args) */
 
-    #define CLASS_FUNC_2_PYT(n, cf) .def( n , &cf , docstrings::cf )
+    #define CLASS_FUNC_2_PYT(n, cf) .def( n , &cf , pyb::doc(docstrings::cf) )
     /* .def("name", &class::function, docstrings::class::function) */
 
-    #define CLASS_FUNC_2_PYT_WITH_ARGS(n, cf, ...) .def( n , &cf , docstrings::cf , __VA_ARGS__ )
+    #define CLASS_FUNC_2_PYT_WITH_ARGS(n, cf, ...) .def( n , &cf , pyb::doc(docstrings::cf) , __VA_ARGS__ )
     /* .def("name", &class::function, docstrings::class::function, args) */
 
 
@@ -111,13 +111,14 @@ PYBIND11_MODULE(vizdoom, vz){
     /* Enums */
     /*----------------------------------------------------------------------------------------------------------------*/
 
-    pyb::enum_<Mode>(vz, "Mode")
+    pyb::enum_<Mode>(vz, "Mode", docstrings::Mode)
         ENUM_VAL_2_PYT(PLAYER)
         ENUM_VAL_2_PYT(SPECTATOR)
         ENUM_VAL_2_PYT(ASYNC_PLAYER)
-        ENUM_VAL_2_PYT(ASYNC_SPECTATOR);
+        ENUM_VAL_2_PYT(ASYNC_SPECTATOR)
+        .export_values();
 
-    pyb::enum_<ScreenFormat>(vz, "ScreenFormat")
+    pyb::enum_<ScreenFormat>(vz, "ScreenFormat", docstrings::ScreenFormat)
         ENUM_VAL_2_PYT(CRCGCB)
         ENUM_VAL_2_PYT(RGB24)
         ENUM_VAL_2_PYT(RGBA32)
@@ -127,9 +128,10 @@ PYBIND11_MODULE(vizdoom, vz){
         ENUM_VAL_2_PYT(BGRA32)
         ENUM_VAL_2_PYT(ABGR32)
         ENUM_VAL_2_PYT(GRAY8)
-        ENUM_VAL_2_PYT(DOOM_256_COLORS8);
+        ENUM_VAL_2_PYT(DOOM_256_COLORS8)
+        .export_values();
 
-    pyb::enum_<ScreenResolution>(vz, "ScreenResolution")
+    pyb::enum_<ScreenResolution>(vz, "ScreenResolution", docstrings::ScreenResolution)
         ENUM_VAL_2_PYT(RES_160X120)
 
         ENUM_VAL_2_PYT(RES_200X125)
@@ -180,14 +182,14 @@ PYBIND11_MODULE(vizdoom, vz){
         ENUM_VAL_2_PYT(RES_1920X1080)
         .export_values();
 
-    pyb::enum_<AutomapMode>(vz, "AutomapMode")
+    pyb::enum_<AutomapMode>(vz, "AutomapMode", docstrings::AutomapMode)
         ENUM_VAL_2_PYT(NORMAL)
         ENUM_VAL_2_PYT(WHOLE)
         ENUM_VAL_2_PYT(OBJECTS)
         ENUM_VAL_2_PYT(OBJECTS_WITH_SIZE)
         .export_values();
 
-    pyb::enum_<Button>(vz, "Button")
+    pyb::enum_<Button>(vz, "Button", docstrings::Button)
         ENUM_VAL_2_PYT(ATTACK)
         ENUM_VAL_2_PYT(USE)
         ENUM_VAL_2_PYT(JUMP)
@@ -233,7 +235,7 @@ PYBIND11_MODULE(vizdoom, vz){
         ENUM_VAL_2_PYT(MOVE_UP_DOWN_DELTA)
         .export_values();
 
-    pyb::enum_<GameVariable>(vz, "GameVariable")
+    pyb::enum_<GameVariable>(vz, "GameVariable", docstrings::GameVariable)
         ENUM_VAL_2_PYT(KILLCOUNT)
         ENUM_VAL_2_PYT(ITEMCOUNT)
         ENUM_VAL_2_PYT(SECRETCOUNT)
@@ -368,7 +370,7 @@ PYBIND11_MODULE(vizdoom, vz){
         ENUM_VAL_2_PYT(PLAYER16_FRAGCOUNT)
         .export_values();
 
-    pyb::enum_<SamplingRate>(vz, "SamplingRate")
+    pyb::enum_<SamplingRate>(vz, "SamplingRate", docstrings::SamplingRate)
         ENUM_VAL_2_PYT(SR_11025)
         ENUM_VAL_2_PYT(SR_22050)
         ENUM_VAL_2_PYT(SR_44100)
@@ -378,7 +380,7 @@ PYBIND11_MODULE(vizdoom, vz){
     /* Structs */
     /*----------------------------------------------------------------------------------------------------------------*/
 
-    pyb::class_<Label>(vz, "Label")
+    pyb::class_<Label>(vz, "Label", docstrings::Label)
         .def(pyb::pickle(
             [](const Label& o) { // dump
                 return pyb::make_tuple(
@@ -438,7 +440,7 @@ PYBIND11_MODULE(vizdoom, vz){
         .def_readonly("object_velocity_z", &Label::objectVelocityZ)
         .def_readonly("object_name", &Label::objectName);
 
-    pyb::class_<Object>(vz, "Object")
+    pyb::class_<Object>(vz, "Object", docstrings::Object)
             .def(pyb::pickle(
             [](const Object& o) { // dump
                 return pyb::make_tuple(
@@ -483,7 +485,7 @@ PYBIND11_MODULE(vizdoom, vz){
         .def_readonly("velocity_z", &Object::velocityZ)
         .def_readonly("name", &Object::name);
 
-    pyb::class_<Line>(vz, "Line")
+    pyb::class_<Line>(vz, "Line", docstrings::Line)
         .def(pyb::pickle(
             [](const Line& o) { // dump
                 return pyb::make_tuple(
@@ -510,7 +512,7 @@ PYBIND11_MODULE(vizdoom, vz){
         .def_readonly("y2", &Line::y2)
         .def_readonly("is_blocking", &Line::isBlocking);
 
-    pyb::class_<SectorPython>(vz, "Sector")
+    pyb::class_<SectorPython>(vz, "Sector", docstrings::Sector)
         .def(pyb::pickle(
             [](const SectorPython& o) { // dump
                 return pyb::make_tuple(
@@ -531,7 +533,7 @@ PYBIND11_MODULE(vizdoom, vz){
         .def_readonly("ceiling_height", &SectorPython::ceilingHeight)
         .def_readonly("lines", &SectorPython::lines);
 
-    pyb::class_<GameStatePython>(vz, "GameState")
+    pyb::class_<GameStatePython>(vz, "GameState", docstrings::GameState)
         .def(pyb::pickle(
             [](const GameStatePython& o) { // dump
                 return pyb::make_tuple(
@@ -578,7 +580,7 @@ PYBIND11_MODULE(vizdoom, vz){
         .def_readonly("objects", &GameStatePython::objects)
         .def_readonly("sectors", &GameStatePython::sectors);
 
-    pyb::class_<ServerStatePython>(vz, "ServerState")
+    pyb::class_<ServerStatePython>(vz, "ServerState", docstrings::ServerState)
             .def(pyb::pickle(
             [](const ServerStatePython& o) { // dump
                 return pyb::make_tuple(
@@ -618,7 +620,7 @@ PYBIND11_MODULE(vizdoom, vz){
     /* DoomGame */
     /*----------------------------------------------------------------------------------------------------------------*/
 
-    pyb::class_<DoomGamePython>(vz, "DoomGame")
+    pyb::class_<DoomGamePython>(vz, "DoomGame", docstrings::DoomGame)
         .def(pyb::init<>())
         CLASS_FUNC_2_PYT("init", DoomGamePython::init)
         CLASS_FUNC_2_PYT_WITH_ARGS("load_config", DoomGamePython::loadConfig, pyb::arg("config"))
@@ -651,6 +653,35 @@ PYBIND11_MODULE(vizdoom, vz){
 
         CLASS_FUNC_2_PYT("get_death_penalty", DoomGamePython::getDeathPenalty)
         CLASS_FUNC_2_PYT_WITH_ARGS("set_death_penalty", DoomGamePython::setDeathPenalty, pyb::arg("death_penalty"))
+        CLASS_FUNC_2_PYT("get_death_reward", DoomGamePython::getDeathReward)
+        CLASS_FUNC_2_PYT_WITH_ARGS("set_death_reward", DoomGamePython::setDeathReward, pyb::arg("death_reward"))
+        CLASS_FUNC_2_PYT("get_map_exit_reward", DoomGamePython::getMapExitReward)
+        CLASS_FUNC_2_PYT_WITH_ARGS("set_map_exit_reward", DoomGamePython::setMapExitReward, pyb::arg("map_exit_reward"))
+        
+        CLASS_FUNC_2_PYT("get_kill_reward", DoomGamePython::getKillReward)
+        CLASS_FUNC_2_PYT_WITH_ARGS("set_kill_reward", DoomGamePython::setKillReward, pyb::arg("kill_reward"))
+        CLASS_FUNC_2_PYT("get_secret_reward", DoomGamePython::getSecretReward)
+        CLASS_FUNC_2_PYT_WITH_ARGS("set_secret_reward", DoomGamePython::setSecretReward, pyb::arg("secret_reward"))
+        CLASS_FUNC_2_PYT("get_item_reward", DoomGamePython::getItemReward)
+        CLASS_FUNC_2_PYT_WITH_ARGS("set_item_reward", DoomGamePython::setItemReward, pyb::arg("item_reward"))
+        CLASS_FUNC_2_PYT("get_frag_reward", DoomGamePython::getFragReward)
+        CLASS_FUNC_2_PYT_WITH_ARGS("set_frag_reward", DoomGamePython::setFragReward, pyb::arg("frag_reward"))
+        CLASS_FUNC_2_PYT("get_hit_reward", DoomGamePython::getHitReward)
+        CLASS_FUNC_2_PYT_WITH_ARGS("set_hit_reward", DoomGamePython::setHitReward, pyb::arg("hit_reward"))
+        CLASS_FUNC_2_PYT("get_hit_taken_reward", DoomGamePython::getHitTakenReward)
+        CLASS_FUNC_2_PYT_WITH_ARGS("set_hit_taken_reward", DoomGamePython::setHitTakenReward, pyb::arg("hit_taken_reward"))
+        CLASS_FUNC_2_PYT("get_hit_taken_penalty", DoomGamePython::getHitTakenPenalty)
+        CLASS_FUNC_2_PYT_WITH_ARGS("set_hit_taken_penalty", DoomGamePython::setHitTakenPenalty, pyb::arg("hit_taken_penalty"))
+        CLASS_FUNC_2_PYT("get_damage_made_reward", DoomGamePython::getDamageMadeReward)
+        CLASS_FUNC_2_PYT_WITH_ARGS("set_damage_made_reward", DoomGamePython::setDamageMadeReward, pyb::arg("damage_made_reward"))
+        CLASS_FUNC_2_PYT("get_damage_taken_reward", DoomGamePython::getDamageTakenReward)
+        CLASS_FUNC_2_PYT_WITH_ARGS("set_damage_taken_reward", DoomGamePython::setDamageTakenReward, pyb::arg("damage_taken_reward"))
+        CLASS_FUNC_2_PYT("get_damage_taken_penalty", DoomGamePython::getDamageTakenPenalty)
+        CLASS_FUNC_2_PYT_WITH_ARGS("set_damage_taken_penalty", DoomGamePython::setDamageTakenPenalty, pyb::arg("damage_taken_penalty"))
+        // CLASS_FUNC_2_PYT("get_health_reward", DoomGamePython::getHealthReward)
+        // CLASS_FUNC_2_PYT_WITH_ARGS("set_health_reward", DoomGamePython::setHealthReward, pyb::arg("health_reward"))
+        // CLASS_FUNC_2_PYT("get_armor_reward", DoomGamePython::getArmorReward)
+        // CLASS_FUNC_2_PYT_WITH_ARGS("set_armor_reward", DoomGamePython::setArmorReward, pyb::arg("armor_reward"))
 
         CLASS_FUNC_2_PYT("get_last_reward", DoomGamePython::getLastReward)
         CLASS_FUNC_2_PYT("get_total_reward", DoomGamePython::getTotalReward)

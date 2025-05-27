@@ -3,6 +3,7 @@
 DoomGame is the main object of the ViZDoom library, representing a single instance of the Doom game and providing the interface for a single agent/player to interact with the game. The object allows sending actions to the game, getting the game state, etc.
 
 
+
 ```{eval-rst}
 .. autoclass:: vizdoom.DoomGame
 ```
@@ -76,6 +77,34 @@ DoomGame is the main object of the ViZDoom library, representing a single instan
 .. autofunction:: vizdoom.DoomGame.set_living_reward
 .. autofunction:: vizdoom.DoomGame.get_death_penalty
 .. autofunction:: vizdoom.DoomGame.set_death_penalty
+.. autofunction:: vizdoom.DoomGame.get_death_reward
+.. autofunction:: vizdoom.DoomGame.set_death_reward
+.. autofunction:: vizdoom.DoomGame.get_map_exit_reward
+.. autofunction:: vizdoom.DoomGame.set_map_exit_reward
+.. autofunction:: vizdoom.DoomGame.get_kill_reward
+.. autofunction:: vizdoom.DoomGame.set_kill_reward
+.. autofunction:: vizdoom.DoomGame.get_item_reward
+.. autofunction:: vizdoom.DoomGame.set_item_reward
+.. autofunction:: vizdoom.DoomGame.get_secret_reward
+.. autofunction:: vizdoom.DoomGame.set_secret_reward
+.. autofunction:: vizdoom.DoomGame.get_frag_reward
+.. autofunction:: vizdoom.DoomGame.set_frag_reward
+.. autofunction:: vizdoom.DoomGame.get_hit_reward
+.. autofunction:: vizdoom.DoomGame.set_hit_reward
+.. autofunction:: vizdoom.DoomGame.get_hit_taken_reward
+.. autofunction:: vizdoom.DoomGame.set_hit_taken_reward
+.. autofunction:: vizdoom.DoomGame.get_hit_taken_penalty
+.. autofunction:: vizdoom.DoomGame.set_hit_taken_penalty
+.. autofunction:: vizdoom.DoomGame.get_damage_made_reward
+.. autofunction:: vizdoom.DoomGame.set_damage_made_reward
+.. autofunction:: vizdoom.DoomGame.get_damage_taken_reward
+.. autofunction:: vizdoom.DoomGame.set_damage_taken_reward
+.. autofunction:: vizdoom.DoomGame.get_damage_taken_penalty
+.. autofunction:: vizdoom.DoomGame.set_damage_taken_penalty
+.. autofunction:: vizdoom.DoomGame.get_health_reward
+.. autofunction:: vizdoom.DoomGame.set_health_reward
+.. autofunction:: vizdoom.DoomGame.get_armor_reward
+.. autofunction:: vizdoom.DoomGame.set_armor_reward
 .. autofunction:: vizdoom.DoomGame.get_last_reward
 .. autofunction:: vizdoom.DoomGame.get_total_reward
 ```

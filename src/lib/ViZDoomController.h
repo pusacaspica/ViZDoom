@@ -1,8 +1,7 @@
 /*
  Copyright (C) 2016 by Wojciech Jaśkowski, Michał Kempka, Grzegorz Runc, Jakub Toczek, Marek Wydmuch
  Copyright (C) 2017 - 2022 by Marek Wydmuch, Michał Kempka, Wojciech Jaśkowski, and the respective contributors
- Copyright (C) 2023 - 2024 by Marek Wydmuch, Farama Foundation, and the respective contributors
-
+ Copyright (C) 2023 - 2025 by Marek Wydmuch, Farama Foundation, and the respective contributors
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -270,6 +269,16 @@ namespace vizdoom {
         bool isReplaying();
         unsigned int getMapTic();
         int getMapReward();
+        int getKillCount();
+        int getSecretCount();
+        int getItemCount();
+        int getFragCount();
+        int getHitCount();
+        int getHitsTaken();
+        int getDamageCount();
+        int getDamageTaken();
+        int getHealth();
+        int getArmor();
         bool isPlayerDead();
 
         int getPlayerCount();
