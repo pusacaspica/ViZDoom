@@ -920,7 +920,7 @@ A negative value is also allowed.
 
 Default value: 0
 
-Config key: `DamageTakenReward`/`damage_taken_reward`
+Config key: `damageTakenReward`/`damage_taken_reward`
 
 Note: added in 1.3.0
 
@@ -934,7 +934,7 @@ Note: added in 1.3.0
 
 Returns the penalty for the player when damaged by an enemy, proportional to the damage received.
 Every point of damage taken will result in a penalty equal to the value returned by this method.
-It is equal to negation of value returned by [`getDamageTakenReward`](#getdamagerewardrecived).
+It is equal to negation of value returned by [`getDamageTakenReward`](#getdamagetakenreward).
 
 Note: added in 1.3.0
 
@@ -952,7 +952,7 @@ Note that in case of a negative value, the player will be rewarded upon receivin
 
 Default value: 0
 
-Config key: `damageRecivedPenalty`/`damage_taken_penalty`
+Config key: `damageTakenPenalty`/`damage_taken_penalty`
 
 Note: added in 1.3.0
 
