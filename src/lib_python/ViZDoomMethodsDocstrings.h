@@ -412,6 +412,30 @@ Config key: ``damageTakenPenalty``/``damage_taken_penalty``
 
 Note: added in 1.3.0)DOCSTRING";
 
+    const char *getHealthReward = R"DOCSTRING(Returns the reward granted to the player for getting health points.
+
+Note: added in 1.3.0)DOCSTRING";
+
+    const char *setHealthReward = R"DOCSTRING(Sets the reward granted to the player for getting health points. A negative value is also allowed.
+
+Default value: 0
+
+Config key: ``healthReward``/``health_reward``
+
+Note: added in 1.3.0)DOCSTRING";
+
+    const char *getArmorReward = R"DOCSTRING(Returns the reward granted to the player for getting armor points.
+
+Note: added in 1.3.0)DOCSTRING";
+
+    const char *setArmorReward = R"DOCSTRING(Sets the reward granted to the player for getting armor points. A negative value is also allowed.
+
+Default value: 0
+
+Config key: ``armorReward``/``armor_reward``
+
+Note: added in 1.3.0)DOCSTRING";
+
     const char *getLastReward = R"DOCSTRING(Returns a reward granted after the last update of state.)DOCSTRING";
 
     const char *getTotalReward = R"DOCSTRING(Returns the sum of all rewards gathered in the current episode.)DOCSTRING";

@@ -144,10 +144,10 @@ namespace vizdoom {
         void setDamageTakenReward(double damageTakenReward);
         double getDamageTakenPenalty();
         void setDamageTakenPenalty(double damageTakenPenalty);
-        // double getHealthReward();
-        // void setHealthReward(double healthReward);
-        // double getArmorReward();
-        // void setArmorReward(double armorReward);
+        double getHealthReward();
+        void setHealthReward(double healthReward);
+        double getArmorReward();
+        void setArmorReward(double armorReward);
 
         double getLastReward();
         double getTotalReward();

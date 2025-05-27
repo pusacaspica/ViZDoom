@@ -211,27 +211,37 @@ namespace vizdoom {
 
         /* Kill reward */
         int killCount = this->doomController->getKillCount();
-        if (this->killReward != 0 && killCount > this->lastKillCount) reward += (killCount - this->lastKillCount) * this->killReward;
+        if (this->killReward != 0 && killCount > this->lastKillCount){
+            reward += (killCount - this->lastKillCount) * this->killReward;
+        }
         this->lastKillCount = killCount;
         
         /* Secret reward */
         int secretCount = this->doomController->getSecretCount();
-        if (this->secretReward != 0 && secretCount > this->lastSecretCount) reward += (secretCount - this->lastSecretCount) * this->secretReward;
+        if (this->secretReward != 0 && secretCount > this->lastSecretCount){
+            reward += (secretCount - this->lastSecretCount) * this->secretReward;
+        }
         this->lastSecretCount = secretCount;
 
         /* Item reward */
         int itemCount = this->doomController->getItemCount();
-        if (this->itemReward != 0 && itemCount > this->lastItemCount) reward += (itemCount - this->lastItemCount) * this->itemReward;
+        if (this->itemReward != 0 && itemCount > this->lastItemCount){
+            reward += (itemCount - this->lastItemCount) * this->itemReward;
+        }
         this->lastItemCount = itemCount;
 
         /* Frag reward */
         int fragCount = this->doomController->getFragCount();
-        if (this->fragReward != 0 && fragCount > this->lastFragCount) reward += (fragCount - this->lastFragCount) * this->fragReward;
+        if (this->fragReward != 0 && fragCount > this->lastFragCount){
+            reward += (fragCount - this->lastFragCount) * this->fragReward;
+        }
         this->lastFragCount = fragCount;
 
         /* Hit reward */
         int hitCount = this->doomController->getHitCount();
-        if (this->hitReward != 0 && hitCount > this->lastHitCount) reward += (hitCount - this->lastHitCount) * this->hitReward;
+        if (this->hitReward != 0 && hitCount > this->lastHitCount){
+            reward += (hitCount - this->lastHitCount) * this->hitReward;
+        }
         this->lastHitCount = hitCount;
         
         /* Hit taken penalty */
@@ -254,6 +264,20 @@ namespace vizdoom {
             reward -= (damageTaken - this->lastDamageTaken) * this->damageTakenPenalty;
         }
         this->lastDamageTaken = damageTaken;
+
+        /* Health reward */
+        int health = this->doomController->getHealth();
+        if (this->healthReward != 0 && health > this->lastHealth) {
+            reward += (health - this->lastHealth) * this->healthReward;
+        }
+        this->lastHealth = health;
+
+        /* Armor reward */
+        int armor = this->doomController->getArmor();
+        if (this->armorReward != 0 && armor > this->lastArmor) {
+            reward += (armor - this->lastArmor) * this->armorReward;
+        }
+        this->lastArmor = armor;
 
         /* Update summary reward */
         this->summaryReward += reward;
@@ -612,6 +636,14 @@ namespace vizdoom {
     double DoomGame::getDamageTakenPenalty() { return this->damageTakenPenalty; }
 
     void DoomGame::setDamageTakenPenalty(double damageTakenPenalty) { this->damageTakenPenalty = damageTakenPenalty; }
+
+    double DoomGame::getHealthReward() { return this->healthReward; }
+
+    void DoomGame::setHealthReward(double healthReward) { this->healthReward = healthReward; }
+
+    double DoomGame::getArmorReward() { return this->armorReward; }
+
+    void DoomGame::setArmorReward(double armorReward) { this->armorReward = armorReward; }
 
     double DoomGame::getLastReward() {
         if (!this->isRunning()) throw ViZDoomIsNotRunningException();

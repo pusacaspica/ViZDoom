@@ -12,6 +12,7 @@ def test_load_config():
     print("Testing all keys of config files ...")
 
     config_values = {
+        "ammo_reward": 0.1,
         "audio_buffer_enabled": True,
         "audio_buffer_size": 8,
         "audio_sampling_rate": vzd.SamplingRate.SR_44100,
@@ -38,6 +39,7 @@ def test_load_config():
         "episode_timeout": 10,
         "frags_reward": 10,
         "game_args": "-fast -respawn",
+        "health_reward": 0.1,
         "hit_reward": 0.5,
         "hit_taken_penalty": 0.5,
         "hit_taken_reward": -0.5,

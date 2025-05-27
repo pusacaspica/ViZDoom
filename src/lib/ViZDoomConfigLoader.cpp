@@ -654,14 +654,14 @@ namespace vizdoom {
                     this->game->setDamageTakenReward(b::lexical_cast<double>(val));
                     continue;
                 }
-                // else if (key == "health_reward" || key == "healthreward") {
-                //     this->game->setHealthReward(b::lexical_cast<double>(val));
-                //     continue;
-                // }
-                // else if (key == "armor_reward" || key == "armorreward") {
-                //     this->game->setArmorReward(b::lexical_cast<double>(val));
-                //     continue;
-                // }
+                else if (key == "health_reward" || key == "healthreward") {
+                    this->game->setHealthReward(b::lexical_cast<double>(val));
+                    continue;
+                }
+                else if (key == "armor_reward" || key == "armorreward") {
+                    this->game->setArmorReward(b::lexical_cast<double>(val));
+                    continue;
+                }
             }
             catch (b::bad_lexical_cast &) {
                 std::cerr << "WARNING! Loading config from: \"" << filePath << "\". Float value expected instead of: " <<

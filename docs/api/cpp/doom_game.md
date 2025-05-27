@@ -958,6 +958,58 @@ Note: added in 1.3.0
 
 
 ---
+### `getHealthReward`
+| C++    | `double getHealthReward()`     |
+| :--    | :--                            |
+| Python | `get_health_reward() -> float` |
+
+Returns the reward granted to the player for getting health points.
+
+Note: added in 1.3.0
+
+
+---
+### `setHealthReward`
+| C++    | `void setHealthReward(double healthReward)`       |
+| :--    | :--                                               |
+| Python | `set_health_reward(health_reward: float) -> None` |
+
+Sets the reward granted to the player for getting health points. A negative value is also allowed.
+
+Default value: 0
+
+Config key: `healthReward`/`health_reward`
+
+Note: added in 1.3.0
+
+
+---
+### `getArmorReward`
+| C++    | `double getArmorReward()`     |
+| :--    | :--                           |
+| Python | `get_armor_reward() -> float` |
+
+Returns the reward granted to the player for getting armor points.
+
+Note: added in 1.3.0
+
+
+---
+### `setArmorReward`
+| C++    | `void setArmorReward(double armorReward)`       |
+| :--    | :--                                             |
+| Python | `set_armor_reward(armor_reward: float) -> None` |
+
+Sets the reward granted to the player for getting armor points. A negative value is also allowed.
+
+Default value: 0
+
+Config key: `armorReward`/`armor_reward`
+
+Note: added in 1.3.0
+
+
+---
 ### `getLastReward`
 
 | C++    | `double getLastReward()`     |
