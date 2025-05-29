@@ -72,27 +72,28 @@ or
 
 ### Note about versions
 
-#### ViZDoom 1.3.0.dev
+#### ViZDoom 1.3.0.dev (development)
 
-We are currently working on version 1.3.0, and decided to make development release from time to time on PyPI.
+We are currently working on version 1.3.0, and decideded to make development releases from time to time on PyPI.
 These releases are mostly incremental updates to the 1.2.4 version.
 We aim to keep the API stable, so 1.3.0 development releases should be compatible with the 1.2.4 version.
 However some minor behaviors may change, and bugs may be introduced.
 The main changes include/will include:
-- The update of Gymnasium environments to the latest Gymnasium API, and some minor improvements and bug fixes.
-- New version of the old environments and completely new environments.
-- New features including methods for easy setting of shaping reward, and natual language log of the game events.
+- The update of Gymnasium environments to the latest Gymnasium API, and some minor improvements and bug fixes,
+- New version of the old environments and completely new environments,
+- New features including methods for easy setting of shaping reward, and natual language log of the game events,
+- Python 3.13 support.
 
 To install the latest development version of ViZDoom, just run:
 ```sh
 pip install vizdoom --pre
 ```
 
-#### ViZDoom 1.2.4
+#### ViZDoom 1.2.4 (stable)
 
-ViZDoom 1.2.4 is the latest stable release, which is compatible with Python 3.8-3.12 and both NumPy 1.x and 2.x versions. Versions 1.2.3 and below do not work correctly with NumPy 2.0+.
-To use NumPy 2.0+ please upgrade ViZDoom to version 1.2.4+.
-For Python 3.13 install ViZDoom 1.3.0.dev release.
+ViZDoom 1.2.4 is the latest stable release, which is compatible with Python 3.8-3.12 and both NumPy 1.x and 2.x versions.
+⚠️ Versions 1.2.3 and below do not work correctly with NumPy 2.0+. To use NumPy 2.0+ please upgrade ViZDoom to version 1.2.4+.
+⚠️ For Python 3.13 install ViZDoom 1.3.0.dev release.
 
 
 ### Linux
