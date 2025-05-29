@@ -70,7 +70,30 @@ or
 
 ## Python quick start
 
-#### Versions 1.2.3 and below do not work correctly with NumPy 2.0+. To use NumPy 2.0+ please upgrade ViZDoom to version 1.2.4+.
+### Note about versions
+
+#### ViZDoom 1.3.0.dev
+
+We are currently working on version 1.3.0, and decided to make development release from time to time on PyPI.
+These releases are mostly incremental updates to the 1.2.4 version.
+We aim to keep the API stable, so 1.3.0 development releases should be compatible with the 1.2.4 version.
+However some minor behaviors may change, and bugs may be introduced.
+The main changes include/will include:
+- The update of Gymnasium environments to the latest Gymnasium API, and some minor improvements and bug fixes.
+- New version of the old environments and completely new environments.
+- New features including methods for easy setting of shaping reward, and natual language log of the game events.
+
+To install the latest development version of ViZDoom, just run:
+```sh
+pip install vizdoom --pre
+```
+
+#### ViZDoom 1.2.4
+
+ViZDoom 1.2.4 is the latest stable release, which is compatible with Python 3.8-3.12 and both NumPy 1.x and 2.x versions. Versions 1.2.3 and below do not work correctly with NumPy 2.0+.
+To use NumPy 2.0+ please upgrade ViZDoom to version 1.2.4+.
+For Python 3.13 install ViZDoom 1.3.0.dev release.
+
 
 ### Linux
 To install the latest release of ViZDoom, just run:
@@ -131,7 +154,7 @@ The API is almost identical between the languages, with the only difference bein
 Unfortunately, we cannot distribute ViZDoom with original Doom graphics.
 If you own original Doom or Doom 2 games, you can replace [Freedoom](https://freedoom.github.io/) graphics by placing `doom.wad` or `doom2.wad` into your working directory or `vizdoom` package directory.
 
-Alternatively, any base game WAD (including other Doom engine-based games and custom/community games) can be used by pointing to it with the [`set_doom_game_path/setDoomGamePath`](https://github.com/Farama-Foundation/ViZDoom/blob/master/doc/DoomGame.md#-setdoomscenariopath) method.
+Alternatively, any base game WAD (including other Doom engine-based games and custom/community games) can be used by pointing to it with the [`set_doom_game_path/setDoomGamePath`](https://vizdoom.farama.org/main/api/python/doom_game/index.html#vizdoom.DoomGame.set_doom_game_path) method.
 
 
 ## Documentation
