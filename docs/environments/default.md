@@ -5,7 +5,7 @@ Below we describe a default singleplayer scenarios (original ViZDoom nomenclatur
 
 ## How to use default scenarios
 
-When using original ViZDoom API, each scenario can be loaded [`load_config`](../api/python/doomGame.md#vizdoom.DoomGame.load_config) (Python)/[`loadConfig`](../api/cpp/doomGame.md#loadconfig) (C++) method:
+When using original ViZDoom API, each scenario can be loaded [`load_config`](../api/python/doom_game.md#vizdoom.DoomGame.load_config) (Python)/[`loadConfig`](../api/cpp/doom_game.md#loadconfig) (C++) method:
 
 Python example:
 ```{code-block} python
