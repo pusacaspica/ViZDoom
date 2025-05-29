@@ -20,6 +20,7 @@ A violation of any of these rules will result in ignoring **only** the line with
 Each list assignment (**`KEY = { VALUES }`**)clears values specified for this key before (in other configuration files or in the code). That is why the **append operator (`KEY += { VALUES }`)** is available. This way you can more easily combine multiple configuration files and tinker in code.
 
 ### Supported configuration keys:
+* `ammoReward/ammo_reward`
 * `audioBufferEnabled/audio_buffer_enabled`
 * `audioBufferSize/audio_buffer_size`
 * `audioSamplingRate/audio_samping_rate`
@@ -31,7 +32,9 @@ Each list assignment (**`KEY = { VALUES }`**)clears values specified for this ke
 * `availableGameVariables/available_game_variables` (list of values)
 * `consoleEnabled/console_enabled`
 * `deathPenalty/death_penalty`
+* `deathReward/death_reward`
 * `depthBufferEnabled/depth_buffer_enabled`
+* `killReward/kill_reward`
 * `DoomConfigPath/doom_config_path`
 * `DoomGamePath/doom_game_path`
 * `DoomMap/doom_map`
@@ -39,7 +42,14 @@ Each list assignment (**`KEY = { VALUES }`**)clears values specified for this ke
 * `DoomSkill/doom_skill`
 * `episodeStartTime/episode_start_time`
 * `episodeTimeout/episode_timeout`
+* `fragReward/frags_reward`
 * `gameArgs/game_args`
+* `healthReward/health_reward`
+* `hitReward/hit_reward`
+* `hitTakenPenalty/hit_taken_penalty`
+* `hitTakenReward/hit_taken_reward`
+* `itemReward/item_reward`
+* `killReward/kill_reward`
 * `labelsBufferEnabled/labels_buffer_enabled`
 * `livingReward/living_reward`
 * `mode`

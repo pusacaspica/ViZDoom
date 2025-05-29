@@ -248,7 +248,7 @@ Default value: 0
 
 Config key: ``deathPenalty``/``death_penalty``)DOCSTRING";
 
-    const char *getDeathReward = R"DOCSTRING(Returns the reward for the player's death. It is equal to negation of value returned by :meth:`get_death_reward`).
+    const char *getDeathReward = R"DOCSTRING(Returns the reward for the player's death. It is equal to negation of value returned by :meth:`get_death_reward`.
 
 Note: added in 1.3.0)DOCSTRING";
 

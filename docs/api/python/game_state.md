@@ -11,7 +11,7 @@
 **tic** - ingame time, 1 tic is 1/35 of second in the game world. Note: added in 1.1.1.
 
 See also:
-- [`DoomGame.get_state`](./doomGame.md#vizdoom.DoomGame.get_state),
+- [`DoomGame.get_state`](./doom_game.md#vizdoom.DoomGame.get_state),
 - [examples/python/basic.py](https://github.com/Farama-Foundation/ViZDoom/tree/master/examples/python/basic.py),
 - [examples/python/buffers.py](https://github.com/Farama-Foundation/ViZDoom/tree/master/examples/python/buffers.py).
 - [examples/python/audio_buffer.py](https://github.com/Farama-Foundation/ViZDoom/tree/master/examples/python/audio_buffer.py).
@@ -35,7 +35,7 @@ See also:
 
 
 See also:
-- [`DoomGame.set_labels_buffer_enabled`](./doomGame.md#vizdoom.DoomGame.set_labels_buffer_enabled),
+- [`DoomGame.set_labels_buffer_enabled`](./doom_game.md#vizdoom.DoomGame.set_labels_buffer_enabled),
 - [examples/python/objects_and_sectors.py](https://github.com/Farama-Foundation/ViZDoom/tree/master/examples/python/labels_buffer.py).
 
 
@@ -51,7 +51,7 @@ See also:
 **name** - ingame object name, many different objects can have the same name (e.g. Medikit, Clip, Zombie).
 
 See also:
-- [`DoomGame.set_objects_info_enabled`](./doomGame.md#vizdoom.DoomGame.set_sectors_info_enabled),
+- [`DoomGame.set_objects_info_enabled`](./doom_game.md#vizdoom.DoomGame.set_sectors_info_enabled),
 - [examples/python/objects_and_sectors.py](https://github.com/Farama-Foundation/ViZDoom/tree/master/examples/python/objects_and_sectors.py).
 
 Note: added in 1.1.8.
@@ -88,7 +88,7 @@ Note: added in 1.1.8.
 **lines** - contains list of line segments, that forms sector.
 
 See also:
-- [`DoomGame.set_sectors_info_enabled`](./doomGame.md#vizdoom.DoomGame.set_sectors_info_enabled),
+- [`DoomGame.set_sectors_info_enabled`](./doom_game.md#vizdoom.DoomGame.set_sectors_info_enabled),
 - [examples/python/objects_and_sectors.py](https://github.com/Farama-Foundation/ViZDoom/tree/master/examples/python/objects_and_sectors.py).
 
 Note: added in 1.1.8.
@@ -100,9 +100,9 @@ Note: added in 1.1.8.
    :undoc-members:
 ```
 
-ServerState is the main object returned by [`DoomGame.get_server_state`](./doomGame.md#vizdoom.DoomGame.get_server_state) method, and it purpose is to get more information about the state of the multi-player game.
+ServerState is the main object returned by [`DoomGame.get_server_state`](./doom_game.md#vizdoom.DoomGame.get_server_state) method, and it purpose is to get more information about the state of the multi-player game.
 
 See also:
-- [`DoomGame.get_server_state`](./doomGame.md#vizdoom.DoomGame.get_server_state).
+- [`DoomGame.get_server_state`](./doom_game.md#vizdoom.DoomGame.get_server_state).
 
 Note: added in 1.1.6.

@@ -239,7 +239,7 @@ See also:
 | :--    | :--                                                              |
 | Python | `get_state() -> GameState`                                       |
 
-Returns [`GameState`](./gameState.md#gamestate) object with the current game state.
+Returns [`GameState`](./game_state.md#gamestate) object with the current game state.
 If the current episode is finished, `nullptr/null/None` will be returned.
 
 Note: Changed in 1.1.0
@@ -252,7 +252,7 @@ Note: Changed in 1.1.0
 | :--    | :--                                                                          |
 | Python | `get_state_state() -> ServerState`                                           |
 
-Returns [`ServerState`](./gameState.md#serverstate) object with the current server state.
+Returns [`ServerState`](./game_state.md#serverstate) object with the current server state.
 
 Note: added in 1.1.6.
 
@@ -429,7 +429,7 @@ that were added with [`setAvailableGameVariables`](#setavailablegamevariables) o
 | :--    | :--                                                                            |
 | Python | `set_available_game_variables(variables: list | tuple[GameVariables]) -> None` |
 
-Sets list of [`GameVariable`](./enums.md#gamevariable) s as available game variables in the [`GameState`](./gameState.md#gamestate) returned by [`getState`](#getstate) method.
+Sets list of [`GameVariable`](./enums.md#gamevariable) s as available game variables in the [`GameState`](./game_state.md#gamestate) returned by [`getState`](#getstate) method.
 
 Has no effect when the game is running.
 
@@ -445,7 +445,7 @@ Config key: `availableGameVariables`/`available_game_variables` (list of values)
 | :--    | :--                                                           |
 | Python | `add_available_game_variable(variable: GameVariable) -> None` |
 
-Adds the specified [`GameVariable`](./enums.md#gamevariable) to the list of available game variables (e.g. `HEALTH`, `AMMO1`, `ATTACK_READY`) in the [`GameState`](./gameState.md#gamestate) returned by [`getState`](#getstate) method.
+Adds the specified [`GameVariable`](./enums.md#gamevariable) to the list of available game variables (e.g. `HEALTH`, `AMMO1`, `ATTACK_READY`) in the [`GameState`](./game_state.md#gamestate) returned by [`getState`](#getstate) method.
 
 Has no effect when the game is running.
 
@@ -459,7 +459,7 @@ Config key: `availableGameVariables`/`available_game_variables` (list of values)
 | :--    | :--                                        |
 | Python | `clear_available_game_variables() -> None` |
 
-Clears the list of available [`GameVariable`](./enums.md#gamevariable) s that are included in the [`GameState`](./gameState.md#gamestate) returned by [`getState`](#getstate) method.
+Clears the list of available [`GameVariable`](./enums.md#gamevariable) s that are included in the [`GameState`](./game_state.md#gamestate) returned by [`getState`](#getstate) method.
 
 Has no effect when the game is running.
 
@@ -608,7 +608,7 @@ Config key: `deathPenalty`/`death_penalty`
 | :--    | :--                           |
 | Python | `get_death_reward() -> float` |
 
-Returns the reward for the player's death. It is equal to negation of value returned by [`getDeathReward`](#getdeathreward)).
+Returns the reward for the player's death. It is equal to negation of value returned by [`getDeathReward`](#getdeathreward).
 
 Note: added in 1.3.0
 
@@ -1358,7 +1358,7 @@ Has no effect when the game is running.
 Config key: `depthBufferEnabled`/`depth_buffer_enabled`
 
 See also:
-- [`GameState`](./gameState.md#gamestate)
+- [`GameState`](./game_state.md#gamestate)
 - [examples/python/buffers.py](https://github.com/Farama-Foundation/ViZDoom/tree/master/examples/python/buffers.py)
 
 Note: added in 1.1.0.
@@ -1383,7 +1383,7 @@ Note: added in 1.1.0.
 | :--    | :--                                                      |
 | Python | `set_labels_buffer_enabled(labels_buffer: bool) -> None` |
 
-Enables rendering of the labels buffer, it will be available in the state with the vector of [`Label`](./gameState.md#label) s.
+Enables rendering of the labels buffer, it will be available in the state with the vector of [`Label`](./game_state.md#label) s.
 The buffer always has the same resolution as the screen buffer.
 LabelsBuffer will contain noise if `viz_nocheat` is enabled.
 
@@ -1394,7 +1394,7 @@ Has no effect when the game is running.
 Config key: `labelsBufferEnabled`/`labels_buffer_enabled`
 
 See also:
-- [`GameState`](./gameState.md#gamestate)
+- [`GameState`](./game_state.md#gamestate)
 - [examples/python/labels.py](https://github.com/Farama-Foundation/ViZDoom/tree/master/examples/python/labels.py)
 - [examples/python/buffers.py](https://github.com/Farama-Foundation/ViZDoom/tree/master/examples/python/buffers.py)
 
@@ -1430,7 +1430,7 @@ Has no effect when the game is running.
 Config key: `automapBufferEnabled`/`automap_buffer_enabled`
 
 See also:
-- [`GameState`](./gameState.md#gamestate)
+- [`GameState`](./game_state.md#gamestate)
 - [examples/python/buffers.py](https://github.com/Farama-Foundation/ViZDoom/tree/master/examples/python/buffers.py),
 
 Note: added in 1.1.0.
@@ -1771,7 +1771,7 @@ Note: added in 1.1.8.
 | :--    | :--                                                    |
 | Python | `set_objects_info_enabled(objects_info: bool) -> None` |
 
-Enables information about all [`Object`](./gameState.md#object) s present in the current episode/level.
+Enables information about all [`Object`](./game_state.md#object) s present in the current episode/level.
 It will be available in the state.
 
 Default value: false
@@ -1781,7 +1781,7 @@ Has no effect when the game is running.
 Config key: `objectsInfoEnabled`/`objects_info_enabled`
 
 See also:
-- [`GameState`](./gameState.md#gamestate)
+- [`GameState`](./game_state.md#gamestate)
 - [examples/python/objects_and_sectors.py](https://github.com/Farama-Foundation/ViZDoom/tree/master/examples/python/objects_and_sectors.py),
 
 Note: added in 1.1.8.
@@ -1806,7 +1806,7 @@ Note: added in 1.1.8.
 | :--    | :--                                                    |
 | Python | `set_sectors_info_enabled(sectors_info: bool) -> None` |
 
-Enables information about all [`Sector`](./gameState.md#sector) s (map layout) present in the current episode/level.
+Enables information about all [`Sector`](./game_state.md#sector) s (map layout) present in the current episode/level.
 It will be available in the state.
 
 Default value: false
@@ -1816,7 +1816,7 @@ Has no effect when the game is running.
 Config key: `sectorsInfoEnabled`/`sectors_info_enabled`
 
 See also:
-- [`GameState`](./gameState.md#gamestate)
+- [`GameState`](./game_state.md#gamestate)
 - [examples/python/objects_and_sectors.py](https://github.com/Farama-Foundation/ViZDoom/tree/master/examples/python/objects_and_sectors.py)
 
 Note: added in 1.1.8.
@@ -1852,7 +1852,7 @@ Has no effect when the game is running.
 Config key: `audioBufferEnabled`/`audio_buffer_enabled`
 
 See also:
-- [`GameState`](./gameState.md#gamestate)
+- [`GameState`](./game_state.md#gamestate)
 - [`SamplingRate`](./enums.md#sampling-rate)
 - [examples/python/audio_buffer.py](https://github.com/Farama-Foundation/ViZDoom/tree/master/examples/python/audio_buffer.py)
 
@@ -1869,7 +1869,7 @@ Note: added in 1.1.9.
 Returns the [`SamplingRate`](./enums.md#sampling-rate) of the audio buffer.
 
 See also:
-- [`GameState`](./gameState.md#gamestate)
+- [`GameState`](./game_state.md#gamestate)
 - [examples/python/audio_buffer.py](https://github.com/Farama-Foundation/ViZDoom/tree/master/examples/python/audio_buffer.py)
 
 Note: added in 1.1.9.
@@ -1891,7 +1891,7 @@ Has no effect when the game is running.
 Config key: `audioSamplingRate`/`audio_sampling_rate`
 
 See also:
-- [`GameState`](./gameState.md#gamestate)
+- [`GameState`](./game_state.md#gamestate)
 - [examples/python/audio_buffer.py](https://github.com/Farama-Foundation/ViZDoom/tree/master/examples/python/audio_buffer.py)
 
 Note: added in 1.1.9.
@@ -1910,7 +1910,7 @@ Note: added in 1.1.9.
 
 
 See also:
-- [`GameState`](./gameState.md#gamestate)
+- [`GameState`](./game_state.md#gamestate)
 - [examples/python/audio_buffer.py](https://github.com/Farama-Foundation/ViZDoom/tree/master/examples/python/audio_buffer.py)
 
 
@@ -1932,7 +1932,7 @@ Has no effect when the game is running.
 Config key: `audioBufferSize`/`audio_buffer_size`
 
 See also:
-- [`GameState`](./gameState.md#gamestate)
+- [`GameState`](./game_state.md#gamestate)
 - [examples/python/audio_buffer.py](https://github.com/Farama-Foundation/ViZDoom/tree/master/examples/python/audio_buffer.py)
 
 Note: added in 1.1.9.
