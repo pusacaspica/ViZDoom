@@ -1,3 +1,5 @@
+Fork made to better coordinate group efforts in order to train a ViZDoom model to play Doom 2 and custom levels for a Game Analytics course. Our collective main goal is to capture play data from Doom matches played by neural networks, my main goal is to have neural networks that play Doom 2. People who know me are well aware of my lifelong obsession with Doom, I'm finally embracing the meme. -@pusacaspica
+
 [![PyPI version](https://badge.fury.io/py/vizdoom.svg)](https://badge.fury.io/py/vizdoom) [![Build and test](https://github.com/Farama-Foundation/ViZDoom/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/Farama-Foundation/ViZDoom/actions/workflows/build-and-test.yml) [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://pre-commit.com/) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 <p align="center">
