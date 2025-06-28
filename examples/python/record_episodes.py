@@ -14,8 +14,8 @@ import vizdoom as vzd
 game = vzd.DoomGame()
 
 # Use other config file if you wish.
-game.load_config(os.path.join(vzd.scenarios_path, "basic.cfg"))
-game.set_episode_timeout(100)
+game.load_config(os.path.join(vzd.scenarios_path, "basic_doom2.cfg"))
+game.set_episode_timeout(4200)
 
 # Record episodes while playing in 320x240 resolution without HUD
 game.set_screen_resolution(vzd.ScreenResolution.RES_320X240)
@@ -102,5 +102,5 @@ for i in range(episodes):
 game.close()
 
 # Delete recordings (*.lmp files).
-for i in range(episodes):
-    os.remove(f"episode{i}_rec.lmp")
+#for i in range(episodes):
+    #os.remove(f"episode{i}_rec.lmp")

@@ -2,12 +2,14 @@
 
 # E. Culurciello, L. Mueller, Z. Boztoprak
 # December 2020
-
+import argparse
 import itertools as it
 import os
 import random
 from collections import deque
 from time import sleep, time
+
+from autoclip.torch import QuantileClip as qc
 
 import numpy as np
 import skimage.transform
@@ -22,7 +24,7 @@ import vizdoom as vzd
 # Q-learning settings
 learning_rate = 0.00025
 discount_factor = 0.99
-train_epochs = 5
+train_epochs = 1000
 learning_steps_per_epoch = 2000
 replay_memory_size = 10000
 
@@ -30,20 +32,21 @@ replay_memory_size = 10000
 batch_size = 64
 
 # Training regime
-test_episodes_per_epoch = 100
+test_episodes_per_epoch = 1
 
 # Other parameters
 frame_repeat = 12
 resolution = (30, 45)
 episodes_to_watch = 10
 
-model_savefile = "./model-doom.pth"
+model_savefile = "./model-doom2.pth"
 save_model = True
 load_model = False
 skip_learning = False
 
 # Configuration file path
-config_file_path = os.path.join(vzd.scenarios_path, "simpler_basic.cfg")
+# config_file_path = os.path.join(vzd.scenarios_path, "simpler_basic.cfg")
+config_file_path = os.path.join(vzd.scenarios_path, "basic_doom2.cfg")
 # config_file_path = os.path.join(vzd.scenarios_path, "rocket_basic.cfg")
 # config_file_path = os.path.join(vzd.scenarios_path, "basic.cfg")
 
@@ -70,7 +73,7 @@ def create_simple_game():
     game.set_window_visible(False)
     game.set_mode(vzd.Mode.PLAYER)
     game.set_screen_format(vzd.ScreenFormat.GRAY8)
-    game.set_screen_resolution(vzd.ScreenResolution.RES_640X480)
+    game.set_screen_resolution(vzd.ScreenResolution.RES_320X240)
     game.init()
     print("Doom initialized.")
 
@@ -109,11 +112,23 @@ def run(game, agent, actions, num_epochs, frame_repeat, steps_per_epoch=2000):
 
     start_time = time()
 
+    if os.path.exists(model_savefile):            
+        print("Loading model from: ", model_savefile)
+        agent.q_net = torch.load(model_savefile)
+
     for epoch in range(num_epochs):
         game.new_episode()
         train_scores = []
         global_step = 0
         print(f"\nEpoch #{epoch + 1}")
+
+        if epoch < num_epochs/3:
+            agent.lr = 0.00050
+        elif epoch < 2 * num_epochs/3:
+            agent.lr = 0.00075
+        else:
+            agent.lr = 0.00025
+
 
         for _ in trange(steps_per_epoch, leave=False):
             state = preprocess(game.get_state().screen_buffer)
@@ -247,7 +262,8 @@ class DQNAgent:
             self.q_net = DuelQNet(action_size).to(DEVICE)
             self.target_net = DuelQNet(action_size).to(DEVICE)
 
-        self.opt = optim.SGD(self.q_net.parameters(), lr=self.lr)
+        self.opt = optim.Adam(self.q_net.parameters(), lr=self.lr)
+        self.opt = qc.as_optimizer(optimizer=self.opt, quantile = 0.9, history_length = 10)
 
     def get_action(self, state):
         if np.random.uniform() < self.epsilon:
@@ -298,6 +314,7 @@ class DQNAgent:
         self.opt.zero_grad()
         td_error = self.criterion(q_targets, action_values)
         td_error.backward()
+        # torch.nn.utils.clip_grad_norm_(self.q_net.parameters(), 1e-2)
         self.opt.step()
 
         if self.epsilon > self.epsilon_min:
@@ -342,7 +359,9 @@ if __name__ == "__main__":
     game.set_mode(vzd.Mode.ASYNC_PLAYER)
     game.init()
 
-    for _ in range(episodes_to_watch):
+    for idx in range(episodes_to_watch):
+        if idx == episodes_to_watch - 1:
+            game.set_window_visible(True)
         game.new_episode()
         while not game.is_episode_finished():
             state = preprocess(game.get_state().screen_buffer)

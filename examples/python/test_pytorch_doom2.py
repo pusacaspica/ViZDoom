@@ -17,7 +17,7 @@ from torch.autograd import Variable
 
 from vizdoom import DoomGame, Mode, ScreenFormat, ScreenResolution, _os
 
-from modded_modded_learning_pytorch import DuelQNet
+from learning_pytorch_doom2 import DuelQNet
 
 import vizdoom as vzd
 
@@ -39,7 +39,7 @@ load_model = False
 skip_learning = False
 # Configuration file path
 
-#config_file_path = os.path.join(vzd.scenarios_path, "basic.cfg")
+# config_file_path = os.path.join(vzd.scenarios_path, "basic.cfg")
 # config_file_path = os.path.join(vzd.scenarios_path, "simpler_basic.cfg")
 # config_file_path = os.path.join(vzd.scenarios_path, "rocket_basic.cfg")
 
@@ -97,7 +97,7 @@ def initialize_vizdoom(config_file_path):
     game.set_window_visible(True)
     game.set_mode(Mode.PLAYER)
     game.set_screen_format(ScreenFormat.GRAY8)
-    game.set_screen_resolution(ScreenResolution.RES_160X120)
+    game.set_screen_resolution(ScreenResolution.RES_640X480)
     game.init()
     print("Doom initialized.")
     return game

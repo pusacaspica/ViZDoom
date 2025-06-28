@@ -22,12 +22,12 @@ import vizdoom as vzd
 # Q-learning settings
 learning_rate = 1e-3
 discount_factor = 0.99
-train_epochs = 10000
+train_epochs = 100
 learning_steps_per_epoch = 1200
 replay_memory_size = 10000
 
 # NN learning settings
-batch_size = 2048
+batch_size = 64
 
 # Training regime
 test_episodes_per_epoch = 100
@@ -37,7 +37,7 @@ frame_repeat = 12
 resolution = (30, 45)
 episodes_to_watch = 10
 
-model_savefile = "./model-doom-doom2.pth"
+model_savefile = "./model-doom-doom2-basic.pth"
 save_model = True
 load_model = False
 skip_learning = False
@@ -45,8 +45,8 @@ skip_learning = False
 # Configuration file path
 # config_file_path = os.path.join(vzd.scenarios_path, "simpler_basic.cfg")
 # config_file_path = os.path.join(vzd.scenarios_path, "rocket_basic.cfg")
-# config_file_path = os.path.join(vzd.scenarios_path, "basic.cfg")
-config_file_path = os.path.join(vzd.scenarios_path, "basic_DOOM2.cfg")
+config_file_path = os.path.join(vzd.scenarios_path, "basic.cfg")
+# config_file_path = os.path.join(vzd.scenarios_path, "basic_DOOM2.cfg")
 
 # Uses GPU if available
 if torch.cuda.is_available():
@@ -122,9 +122,9 @@ def run(game, agent, actions, num_epochs, frame_repeat, steps_per_epoch=2000):
             skill_value +=1
             game.set_doom_skill(skill_value)
 
-        if epoch > 9000:
+        if epoch > 750:
             agent.lr = 1e-4
-        elif epoch > 5000:
+        elif epoch > 500:
             agent.lr = 1e-3
         else:
             agent.lr = 1e-2

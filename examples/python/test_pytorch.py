@@ -5,7 +5,7 @@
 
 import itertools as it
 from time import sleep
-
+import os
 import numpy as np
 import skimage.color
 import skimage.transform
@@ -14,7 +14,9 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.autograd import Variable
 
-from vizdoom import DoomGame, Mode, ScreenFormat, ScreenResolution, os, vzd
+from learning_pytorch import DuelQNet
+from vizdoom import DoomGame, Mode, ScreenFormat, ScreenResolution, _os
+import vizdoom as vzd
 
 
 # NN learning settings
@@ -28,21 +30,22 @@ frame_repeat = 12
 resolution = (30, 45)
 episodes_to_watch = 10
 
-model_savefile = "./model-doom.pth"
+model_savefile = "./model-doom2.pth"
 save_model = True
 load_model = False
 skip_learning = False
 # Configuration file path
 
-config_file_path = os.path.join(vzd.scenarios_path, "simpler_basic.cfg")
+# config_file_path = os.path.join(vzd.scenarios_path, "simpler_basic.cfg")
 # config_file_path = os.path.join(vzd.scenarios_path, "rocket_basic.cfg")
 # config_file_path = os.path.join(vzd.scenarios_path, "basic.cfg")
+config_file_path = os.path.join(vzd.scenarios_path, "basic_doom2.cfg")
 
 
 # Converts and down-samples the input image
 def preprocess(img):
     img = skimage.transform.resize(img, resolution)
-    img = img.astype(np.float32)
+    img = torch.from_numpy(img.astype(np.float32)).to(device="cuda")
     return img
 
 
@@ -63,7 +66,7 @@ class Net(nn.Module):
 
 
 def get_q_values(state):
-    state = torch.from_numpy(state)
+    # state = torch.from_numpy(state)
     state = Variable(state)
     return model(state)
 
@@ -71,7 +74,7 @@ def get_q_values(state):
 def get_best_action(state):
     q = get_q_values(state)
     m, index = torch.max(q, 1)
-    action = index.data.numpy()[0]
+    action = index.data.cpu().numpy()[0]
     return action
 
 
@@ -83,7 +86,7 @@ def initialize_vizdoom(config_file_path):
     game.set_window_visible(True)
     game.set_mode(Mode.PLAYER)
     game.set_screen_format(ScreenFormat.GRAY8)
-    game.set_screen_resolution(ScreenResolution.RES_640X480)
+    game.set_screen_resolution(ScreenResolution.RES_320X240)
     game.init()
     print("Doom initialized.")
     return game
@@ -106,6 +109,7 @@ if __name__ == "__main__":
     # Reinitialize the game with window visible
     game.set_window_visible(True)
     game.set_mode(Mode.ASYNC_PLAYER)
+    game.set_episode_timeout(420)
     game.init()
 
     for _ in range(episodes_to_watch):
