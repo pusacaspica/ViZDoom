@@ -94,6 +94,26 @@ actions_names = [
         "SELECT_PREV_WEAPON"
         ]
 
+def adjust_positions(list_of_ticks: Tick, image_shape: list[int]) -> list[Tick]:
+    adjusted_list_of_ticks = []
+    min = [0, 0, 0]
+    for tick in list_of_ticks:
+        if min[0] > tick.position[0]:
+            min[0] = tick.position[0]
+        if min[2] > tick.position[2]:
+            min[2] = tick.position[2]
+        if min[1] > tick.position[1]:
+            min[1] = tick.position[1]
+    adj_max = (0, 0, 0)
+    for tick in list_of_ticks:
+        adjusted_tick = Tick(tick.tick_count, 
+            -tick.position[0] + np.abs(min[0]), (tick.position[1] + np.abs(min[1]))/image_shape[1], 
+            tick.position[2] + np.abs(min[2]), tick.roll_pitch_angle[0], tick.roll_pitch_angle[1], 
+            tick.roll_pitch_angle[2], tick.health_armor[0], tick.weapon_ammo[0], tick.health_armor[1], 
+            tick.weapon_ammo[1], tick.action)
+        adjusted_list_of_ticks.append(adjusted_tick)
+    return adjusted_list_of_ticks
+
 n = game.get_available_buttons_size()
 actions = [list(a) for a in it.product([0, 1], repeat=n)]
 sessions = []
@@ -138,6 +158,8 @@ for idx in range(episodes_to_watch):
                 for tick in session_ticks:
                     file.write(str(tick))
 
+# sessions = adjust_positions(sessions, [len(bkgfig), len(bkgfig[0])])
+
 out_file_prefix = "playsession_e"
 out_file_extension = "_.png"
 out_file = out_file_prefix + str(idx) + out_file_extension
@@ -148,7 +170,36 @@ for idx, tick in enumerate(sessions):
     ax.arrow(
         x = tick.position[0], y =  tick.position[1],
         dx = tick.position[0] * np.cos(tick.roll_pitch_angle[2]), dy = tick.position[1] * np.sin(tick.roll_pitch_angle[2]),      # Direction and length
+        head_width = 3,
+        head_length = 1,
+        color ='cyan',
+        alpha = 0.8,
+        zorder = 2.0
     )
+
+sessions = adjust_positions(sessions, [len(bkgfig), len(bkgfig[0])])
+for idx, tick in enumerate(sessions):
+    if 'TURN_LEFT' in tick.action:
+        ax.arrow(
+            x = tick.position[0], y =  tick.position[1],
+            dx = -tick.position[0] * np.cos(tick.roll_pitch_angle[2]) * 0.02, dy = tick.position[1] * np.sin(tick.roll_pitch_angle[2]) * 0.02,      # Direction and length
+            head_width = 8,
+            head_length = 8,
+            color ='blue',
+            alpha = 0.8,
+            zorder = 2.0
+        )
+    else:
+        # for tick in session:
+        ax.arrow(
+            x = tick.position[0], y =  tick.position[1],
+            dx = -tick.position[0] * np.cos(tick.roll_pitch_angle[2]) * 0.02, dy = tick.position[1] * np.sin(tick.roll_pitch_angle[2]) * 0.02,      # Direction and length
+            head_width = 8,
+            head_length = 8,
+            color ='red',
+            alpha = 0.8,
+            zorder = 2.0
+        )
 # Hide axis ticks if desired
 ax.set_xticks([])
 ax.set_yticks([])
